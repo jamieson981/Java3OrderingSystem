@@ -1,0 +1,26 @@
+Menu items 
+enum categories ("drinks"...)
+blob for photos
+
+TABLES:
+custOrder
+orderitems
+menuitems
+tableNo
+
+
+tableNo:
+ID PK
+custOrderId FK
+orderItemsId
+
+custOrder:
+ID PK
+orderItemsId FK
+
+menuItems:
+ID PK
+itemName
+category ENUM ("drinks", "starters", "main dishes", "desserts", "drinks")
+
+orderItems:
