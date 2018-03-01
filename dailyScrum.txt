@@ -16,3 +16,23 @@ n/a
 -work with Arad to get trello filled in
 3. Where do I need assistance? What do I need to figure out?
 -how to split workload between myself and Arad
+
+
+<<02-28-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+Make a previw simple previwe  of App  
+2. What I plan to do from this scrum to the next? (next 24 hours)
+make a simple table
+
+3. Where do I need assistance? What do I need to figure out?
+speek with Alex about structure of data base and the apearence of the app also the achallengig point
+
+
+
+<<03-01-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+I sent the previwe /not speek with Alex
+2. What I plan to do from this scrum to the next? (next 24 hours)
+Make the UI and the calculating Method ,Study about printig and make a mutrix of image
+3. Where do I need assistance? What do I need to figure out?
+maybe i need the structure of data base and the object classes i have to speak with Alex if he made them
