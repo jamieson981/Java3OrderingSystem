@@ -54,3 +54,11 @@ i have to speak with Alex about sharing the task
 -finish db setup
 3. Where do I need assistance? What do I need to figure out?
 n/a
+
+<<03-03-2018 -- 03-04-2018>> Alex Jamieson
+1. What I have done / not done since last Scrum?-
+-weekend scrum
+2. What I plan to do from this scrum to the next? (next 24 hours)
+-make correct classes/fix ones already used
+3. Where do I need assistance? What do I need to figure out?
+n/a
