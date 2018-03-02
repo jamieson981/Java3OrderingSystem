@@ -23,7 +23,6 @@ n/a
 Make a previw simple previwe  of App  
 2. What I plan to do from this scrum to the next? (next 24 hours)
 make a simple table
-
 3. Where do I need assistance? What do I need to figure out?
 speek with Alex about structure of data base and the apearence of the app also the achallengig point
 
@@ -45,3 +44,13 @@ i made the Ui/study about Print/not speek with Alex
 we have to make Database,class for the table,crud,making first version of app 
 3. Where do I need assistance? What do I need to figure out?
 i have to speak with Alex about sharing the task
+
+<<03-02-2018>> Alex Jamieson
+1. What I have done / not done since last Scrum?
+-fixed proposal
+-made db tables
+-spoke with arad and filled in trello some more
+2. What I plan to do from this scrum to the next? (next 24 hours)
+-finish db setup
+3. Where do I need assistance? What do I need to figure out?
+n/a
