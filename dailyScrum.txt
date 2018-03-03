@@ -62,3 +62,13 @@ n/a
 -make correct classes/fix ones already used
 3. Where do I need assistance? What do I need to figure out?
 n/a
+
+
+
+<<03-03-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+i made some change in ui and almost completed,finding the picture for the food 
+2. What I plan to do from this scrum to the next? (next 24 hours)
+change the size of pictur , add the data to the tablse
+3. Where do I need assistance? What do I need to figure out?
+n/a
