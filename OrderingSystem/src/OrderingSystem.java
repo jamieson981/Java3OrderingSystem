@@ -61,6 +61,7 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblWelcome = new javax.swing.JLabel();
         btnStart = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -177,11 +178,16 @@ public class OrderingSystem extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.setLayout(null);
 
         lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWelcome.setText("Welcome");
+        jPanel1.add(lblWelcome);
+        lblWelcome.setBounds(113, 96, 167, 28);
 
         btnStart.setText("start");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
@@ -189,30 +195,13 @@ public class OrderingSystem extends javax.swing.JFrame {
                 btnStartActionPerformed(evt);
             }
         });
+        jPanel1.add(btnStart);
+        btnStart.setBounds(167, 251, 55, 23);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(btnStart)))
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(btnStart)
-                .addGap(64, 64, 64))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\john abote\\java3Morning\\OrderingSystem\\image\\9fbc60_37e26529f8d5828138c1e5066810f3b5.gif")); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(0, 0, 700, 470);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -295,6 +284,7 @@ public class OrderingSystem extends javax.swing.JFrame {
     private javax.swing.JTextField dlg_tfTotal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
