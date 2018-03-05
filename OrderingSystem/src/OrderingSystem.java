@@ -198,7 +198,7 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         jLabel4.setText("jLabel4");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(0, 0, 230, 110);
+        jLabel4.setBounds(20, 10, 230, 110);
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
