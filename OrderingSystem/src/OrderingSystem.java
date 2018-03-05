@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -22,6 +23,7 @@ public class OrderingSystem extends javax.swing.JFrame {
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+       btnStart.setBackground(Color.DARK_GRAY);
         
         
     }
@@ -40,11 +42,11 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         dlg_lstOrder = new javax.swing.JList<>();
-        dlg_btnAdd = new javax.swing.JButton();
+        dlg_tfTotal = new javax.swing.JTextField();
         dlg_btnRemove = new javax.swing.JButton();
         dlg_btnPeyment = new javax.swing.JButton();
-        dlg_tfTotal = new javax.swing.JTextField();
         dlg_lblTotal = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         dlgMe_MianDish = new javax.swing.JMenuItem();
@@ -57,16 +59,24 @@ public class OrderingSystem extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         dlgMe_Cold = new javax.swing.JMenuItem();
         dlgPeyment = new javax.swing.JDialog();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lblWelcome = new javax.swing.JLabel();
+        btnStart1 = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
+        dlgMenu.setPreferredSize(new java.awt.Dimension(700, 500));
+
         jLabel2.setText("jLabel2");
         dlgMenu.getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setLayout(null);
 
         dlg_lstOrder.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -75,54 +85,31 @@ public class OrderingSystem extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(dlg_lstOrder);
 
-        dlg_btnAdd.setText("Add ");
-
-        dlg_btnRemove.setText("remove");
-
-        dlg_btnPeyment.setText("peyment");
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 10, 160, 260);
 
         dlg_tfTotal.setText("00.00");
+        jPanel2.add(dlg_tfTotal);
+        dlg_tfTotal.setBounds(90, 280, 80, 30);
 
+        dlg_btnRemove.setText("remove");
+        jPanel2.add(dlg_btnRemove);
+        dlg_btnRemove.setBounds(330, 290, 69, 23);
+
+        dlg_btnPeyment.setText("peyment");
+        jPanel2.add(dlg_btnPeyment);
+        dlg_btnPeyment.setBounds(410, 290, 75, 23);
+
+        dlg_lblTotal.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        dlg_lblTotal.setForeground(new java.awt.Color(204, 204, 204));
         dlg_lblTotal.setText("Total");
+        jPanel2.add(dlg_lblTotal);
+        dlg_lblTotal.setBounds(10, 280, 80, 33);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(dlg_btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dlg_btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(dlg_btnPeyment, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(dlg_lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(dlg_tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dlg_btnRemove)
-                            .addComponent(dlg_btnAdd)
-                            .addComponent(dlg_btnPeyment)
-                            .addComponent(dlg_tfTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(dlg_lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(0, 0, 510, 340);
 
         dlgMenu.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -166,16 +153,27 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         dlgMenu.setJMenuBar(jMenuBar2);
 
-        javax.swing.GroupLayout dlgPeymentLayout = new javax.swing.GroupLayout(dlgPeyment.getContentPane());
-        dlgPeyment.getContentPane().setLayout(dlgPeymentLayout);
-        dlgPeymentLayout.setHorizontalGroup(
-            dlgPeymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        dlgPeyment.setMinimumSize(new java.awt.Dimension(700, 500));
+        dlgPeyment.setPreferredSize(new java.awt.Dimension(700, 500));
+
+        jLabel5.setText("jLabel5");
+        dlgPeyment.getContentPane().add(jLabel5, java.awt.BorderLayout.PAGE_END);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel8.setText("jLabel8");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
         );
-        dlgPeymentLayout.setVerticalGroup(
-            dlgPeymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 286, Short.MAX_VALUE)
         );
+
+        dlgPeyment.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
@@ -183,25 +181,35 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWelcome.setText("Welcome");
-        jPanel1.add(lblWelcome);
-        lblWelcome.setBounds(113, 96, 167, 28);
+        btnStart1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btnStart1.setText("Order");
+        btnStart1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStart1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnStart1);
+        btnStart1.setBounds(270, 150, 180, 60);
 
-        btnStart.setText("start");
+        btnStart.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btnStart.setText("Game");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStartActionPerformed(evt);
             }
         });
         jPanel1.add(btnStart);
-        btnStart.setBounds(167, 251, 55, 23);
+        btnStart.setBounds(270, 240, 180, 60);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\john abote\\java3Morning\\OrderingSystem\\image\\9fbc60_37e26529f8d5828138c1e5066810f3b5.gif")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\logo1.PNG")); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(0, 0, 230, 110);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(0, 0, 700, 470);
+        jLabel3.setBounds(0, 0, 700, 450);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -231,6 +239,10 @@ public class OrderingSystem extends javax.swing.JFrame {
     private void dlgMe_HotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgMe_HotActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dlgMe_HotActionPerformed
+
+    private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStart1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +281,7 @@ public class OrderingSystem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
+    private javax.swing.JButton btnStart1;
     private javax.swing.JMenuItem dlgMe_Cold;
     private javax.swing.JMenuItem dlgMe_Dessert;
     private javax.swing.JMenuItem dlgMe_Hot;
@@ -276,7 +289,6 @@ public class OrderingSystem extends javax.swing.JFrame {
     private javax.swing.JMenuItem dlgMe_MianDish;
     private javax.swing.JDialog dlgMenu;
     private javax.swing.JDialog dlgPeyment;
-    private javax.swing.JButton dlg_btnAdd;
     private javax.swing.JButton dlg_btnPeyment;
     private javax.swing.JButton dlg_btnRemove;
     private javax.swing.JLabel dlg_lblTotal;
@@ -285,17 +297,21 @@ public class OrderingSystem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JLabel lblWelcome;
     // End of variables declaration//GEN-END:variables
 }
