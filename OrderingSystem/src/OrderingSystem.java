@@ -71,8 +71,6 @@ public class OrderingSystem extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
-        dlgMenu.setPreferredSize(new java.awt.Dimension(700, 500));
-
         jLabel2.setText("jLabel2");
         dlgMenu.getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
 
@@ -106,7 +104,6 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel2.add(dlg_lblTotal);
         dlg_lblTotal.setBounds(10, 280, 80, 33);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
         jPanel2.add(jLabel6);
         jLabel6.setBounds(0, 0, 510, 340);
@@ -154,23 +151,21 @@ public class OrderingSystem extends javax.swing.JFrame {
         dlgMenu.setJMenuBar(jMenuBar2);
 
         dlgPeyment.setMinimumSize(new java.awt.Dimension(700, 500));
-        dlgPeyment.setPreferredSize(new java.awt.Dimension(700, 500));
 
         jLabel5.setText("jLabel5");
         dlgPeyment.getContentPane().add(jLabel5, java.awt.BorderLayout.PAGE_END);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel8.setText("jLabel8");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 286, Short.MAX_VALUE)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
         );
 
         dlgPeyment.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -201,12 +196,11 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel1.add(btnStart);
         btnStart.setBounds(270, 240, 180, 60);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\logo1.PNG")); // NOI18N
         jLabel4.setText("jLabel4");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(0, 0, 230, 110);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 700, 450);
