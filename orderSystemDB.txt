@@ -1,5 +1,0 @@
-server : java3ordersystem.database.windows.net
-
-username : orderSystem
-
-password : Java3Project

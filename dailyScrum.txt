@@ -72,3 +72,24 @@ i made some change in ui and almost completed,finding the picture for the food
 change the size of pictur , add the data to the tablse
 3. Where do I need assistance? What do I need to figure out?
 n/a
+
+
+<<03-04-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+made some change in UI to make it more beautiful/it is not comleated ihave some idea to change the menu,i did not add the data
+2. What I plan to do from this scrum to the next? (next 24 hours)
+I will complete the UI to be Nicer,i will add the code for calculating part
+3. Where do I need assistance? What do I need to figure out?
+n/a
+
+
+<<03-05-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+i almost finished the UI it was biger job than wath i think i pushed but now i did not find the last version here iwill fix it
+/i wanted to add the data in the database but i put my fucus on the UI and i did not completed the calculating part
+2. What I plan to do from this scrum to the next? (next 24 hours)
+I will fix the problem of UI the last version i will add the code for calculating part
+3. Where do I need assistance? What do I need to figure out?
+about data base records
+
+
