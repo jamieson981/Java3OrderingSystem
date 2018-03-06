@@ -5,7 +5,6 @@ import Services.MenuService;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,8 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -29,8 +26,8 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
   
     //public static final String DBUSER = "restaurant";
     //public static final String DBPASS = "as5SRxjW5Roq3kbx";
-    public static final String DBUSER = "alexJamieson";
-    public static final String DBPASS = "JavaProject";
+//    public static final String DBUSER = "alexJamieson";
+//    public static final String DBPASS = "JavaProject";
     private Connection conn;
     DefaultListModel<MenuDishOrder> menuListModel = new DefaultListModel<>();
 //    BigDecimal total =BigDecimal.ZERO;
