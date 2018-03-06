@@ -1,0 +1,21 @@
+-tableNo:
+-ID PK
+-custOrderId FK
+-orderItemsId
+-
+-custOrder:
+-ID PK
+-orderItemsId FK
+-
+-menuItems:
+-ID PK
+-itemName
+-category ENUM ("drinks", "starters", "main dishes", "desserts")
+-photos BLOB
+-price 
+-
+-orderItems:
+-ID PK
+-custOrderId
+-menuItemId
+-quantity

@@ -5,6 +5,8 @@
         <group>
             <file>file:/D:/Java3Project/prgMenuRestaurant/src/Services/MenuService.java</file>
             <file>file:/D:/Java3Project/prgMenuRestaurant/src/WelcomeToResMenu.java</file>
+            <file>file:/D:/Java3Project/prgMenuRestaurant/src/Services/DBService.java</file>
+            <file>file:/D:/Java3Project/prgMenuRestaurant/src/Models/MenuDishOrder.java</file>
         </group>
     </open-files>
 </project-private>
