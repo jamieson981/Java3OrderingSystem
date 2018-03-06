@@ -109,6 +109,6 @@ Fixed the problem made calculating part fixed the picture size
 adding the pictur making relation between Ui and database and testing functionallity and probably fix the problem
 if i have time addig game page for when the customer is wating the order
 3. Where do I need assistance? What do I need to figure out?
-for last test
+for last test and prepare the presentation
 
 
