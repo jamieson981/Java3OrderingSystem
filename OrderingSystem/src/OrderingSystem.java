@@ -24,7 +24,8 @@ public class OrderingSystem extends javax.swing.JFrame {
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-       btnStart.setBackground(Color.DARK_GRAY);
+       btnorder.setBackground(Color.DARK_GRAY);
+       btnGame.setBackground(Color.DARK_GRAY);
         
         
     }
@@ -72,11 +73,13 @@ public class OrderingSystem extends javax.swing.JFrame {
         dlgLogIn_btnOk1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnStart1 = new javax.swing.JButton();
-        btnStart = new javax.swing.JButton();
+        btnorder = new javax.swing.JButton();
+        btnGame = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+
+        dlgMenu.setPreferredSize(new java.awt.Dimension(700, 500));
 
         jLabel2.setText("jLabel2");
         dlgMenu.getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
@@ -91,29 +94,30 @@ public class OrderingSystem extends javax.swing.JFrame {
         jScrollPane1.setViewportView(dlg_lstOrder);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 160, 260);
+        jScrollPane1.setBounds(30, 30, 160, 310);
 
         dlg_tfTotal.setText("00.00");
         jPanel2.add(dlg_tfTotal);
-        dlg_tfTotal.setBounds(90, 280, 80, 30);
+        dlg_tfTotal.setBounds(110, 360, 80, 30);
 
         dlg_btnRemove.setText("remove");
         jPanel2.add(dlg_btnRemove);
-        dlg_btnRemove.setBounds(330, 290, 69, 23);
+        dlg_btnRemove.setBounds(480, 360, 69, 23);
 
         dlg_btnPeyment.setText("peyment");
         jPanel2.add(dlg_btnPeyment);
-        dlg_btnPeyment.setBounds(410, 290, 75, 23);
+        dlg_btnPeyment.setBounds(560, 360, 75, 23);
 
         dlg_lblTotal.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         dlg_lblTotal.setForeground(new java.awt.Color(204, 204, 204));
         dlg_lblTotal.setText("Total");
         jPanel2.add(dlg_lblTotal);
-        dlg_lblTotal.setBounds(10, 280, 80, 33);
+        dlg_lblTotal.setBounds(30, 360, 80, 33);
 
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(0, 0, 510, 340);
+        jLabel6.setBounds(0, 0, 700, 460);
 
         dlgMenu.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -244,25 +248,25 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
-        btnStart1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        btnStart1.setText("Order");
-        btnStart1.addActionListener(new java.awt.event.ActionListener() {
+        btnorder.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btnorder.setText("Order");
+        btnorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStart1ActionPerformed(evt);
+                btnorderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnStart1);
-        btnStart1.setBounds(270, 150, 180, 60);
+        jPanel1.add(btnorder);
+        btnorder.setBounds(270, 150, 180, 60);
 
-        btnStart.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        btnStart.setText("Game");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
+        btnGame.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btnGame.setText("Game");
+        btnGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
+                btnGameActionPerformed(evt);
             }
         });
-        jPanel1.add(btnStart);
-        btnStart.setBounds(270, 240, 180, 60);
+        jPanel1.add(btnGame);
+        btnGame.setBounds(270, 240, 180, 60);
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
@@ -289,12 +293,12 @@ public class OrderingSystem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+    private void btnGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGameActionPerformed
         // TODO add your handling code here:
         
         dlgMenu.pack();
         dlgMenu.setVisible(true);
-    }//GEN-LAST:event_btnStartActionPerformed
+    }//GEN-LAST:event_btnGameActionPerformed
 
     private void dlgMe_MianDishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgMe_MianDishActionPerformed
         // TODO add your handling code here:
@@ -308,9 +312,12 @@ public class OrderingSystem extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dlgMe_HotActionPerformed
 
-    private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
+    private void btnorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnorderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnStart1ActionPerformed
+        
+        dlgMenu.pack();
+        dlgMenu.setVisible(true);
+    }//GEN-LAST:event_btnorderActionPerformed
 
     private void dlgLogIn_btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgLogIn_btnCancelActionPerformed
         // TODO add your handling code here:
@@ -382,8 +389,8 @@ public class OrderingSystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnStart;
-    private javax.swing.JButton btnStart1;
+    private javax.swing.JButton btnGame;
+    private javax.swing.JButton btnorder;
     private javax.swing.JDialog dlgLogIn;
     private javax.swing.JButton dlgLogIn_btnCancel;
     private javax.swing.JButton dlgLogIn_btnOk1;
