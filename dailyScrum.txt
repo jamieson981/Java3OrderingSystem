@@ -92,4 +92,13 @@ I will fix the problem of UI the last version i will add the code for calculatin
 3. Where do I need assistance? What do I need to figure out?
 about data base records
 
+<<03-05-2018>> Alex Jamieson
+1. What I have done / not done since last Scrum?
+fixed most classes / linked to new database (using a server my brother has)
+2. What I plan to do from this scrum to the next? (next 24 hours)
+finish fixing classes and fully connect to UI,
+also push/commit to git (i forgot to do it yesterday)
+3. Where do I need assistance? What do I need to figure out?
+linking everything with the new DB
+
 
