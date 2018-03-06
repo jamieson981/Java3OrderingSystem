@@ -2,6 +2,9 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 /*
@@ -26,6 +29,11 @@ public class OrderingSystem extends javax.swing.JFrame {
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
        btnorder.setBackground(Color.DARK_GRAY);
        btnGame.setBackground(Color.DARK_GRAY);
+       
+       
+       DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+       Calendar cal = Calendar.getInstance();
+       dlgMenu_lblDate.setText(dateFormat.format(cal.getTime()));
         
         
     }
@@ -40,7 +48,7 @@ public class OrderingSystem extends javax.swing.JFrame {
     private void initComponents() {
 
         dlgMenu = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
+        dlgMenu_lblDate = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         dlg_lstOrder = new javax.swing.JList<>();
@@ -48,6 +56,10 @@ public class OrderingSystem extends javax.swing.JFrame {
         dlg_btnRemove = new javax.swing.JButton();
         dlg_btnPeyment = new javax.swing.JButton();
         dlg_lblTotal = new javax.swing.JLabel();
+        dlgmenu_lblPic2 = new javax.swing.JLabel();
+        dlgmenu_lblPic1 = new javax.swing.JLabel();
+        dlgmenu_lblPic4 = new javax.swing.JLabel();
+        dlgmenu_lblPic3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -81,8 +93,8 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         dlgMenu.setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jLabel2.setText("jLabel2");
-        dlgMenu.getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
+        dlgMenu_lblDate.setText("jLabel2");
+        dlgMenu.getContentPane().add(dlgMenu_lblDate, java.awt.BorderLayout.PAGE_END);
 
         jPanel2.setLayout(null);
 
@@ -102,17 +114,33 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         dlg_btnRemove.setText("remove");
         jPanel2.add(dlg_btnRemove);
-        dlg_btnRemove.setBounds(480, 360, 69, 23);
+        dlg_btnRemove.setBounds(440, 360, 69, 23);
 
         dlg_btnPeyment.setText("peyment");
         jPanel2.add(dlg_btnPeyment);
-        dlg_btnPeyment.setBounds(560, 360, 75, 23);
+        dlg_btnPeyment.setBounds(540, 360, 75, 23);
 
         dlg_lblTotal.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         dlg_lblTotal.setForeground(new java.awt.Color(204, 204, 204));
         dlg_lblTotal.setText("Total");
         jPanel2.add(dlg_lblTotal);
         dlg_lblTotal.setBounds(30, 360, 80, 33);
+
+        dlgmenu_lblPic2.setText("picture");
+        jPanel2.add(dlgmenu_lblPic2);
+        dlgmenu_lblPic2.setBounds(540, 50, 90, 100);
+
+        dlgmenu_lblPic1.setText("picture");
+        jPanel2.add(dlgmenu_lblPic1);
+        dlgmenu_lblPic1.setBounds(400, 190, 90, 100);
+
+        dlgmenu_lblPic4.setText("picture");
+        jPanel2.add(dlgmenu_lblPic4);
+        dlgmenu_lblPic4.setBounds(540, 190, 90, 100);
+
+        dlgmenu_lblPic3.setText("picture");
+        jPanel2.add(dlgmenu_lblPic3);
+        dlgmenu_lblPic3.setBounds(400, 50, 90, 100);
 
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
@@ -404,14 +432,18 @@ public class OrderingSystem extends javax.swing.JFrame {
     private javax.swing.JMenuItem dlgMe_MaineDish;
     private javax.swing.JMenuItem dlgMe_MianDish;
     private javax.swing.JDialog dlgMenu;
+    private javax.swing.JLabel dlgMenu_lblDate;
     private javax.swing.JDialog dlgPeyment;
     private javax.swing.JButton dlg_btnPeyment;
     private javax.swing.JButton dlg_btnRemove;
     private javax.swing.JLabel dlg_lblTotal;
     private javax.swing.JList<String> dlg_lstOrder;
     private javax.swing.JTextField dlg_tfTotal;
+    private javax.swing.JLabel dlgmenu_lblPic1;
+    private javax.swing.JLabel dlgmenu_lblPic2;
+    private javax.swing.JLabel dlgmenu_lblPic3;
+    private javax.swing.JLabel dlgmenu_lblPic4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
