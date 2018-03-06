@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Locale;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -62,11 +63,17 @@ public class OrderingSystem extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        dlgLogIn = new javax.swing.JDialog();
+        dlgLogIn_lblUser = new javax.swing.JLabel();
+        dlgLogin_lblPassword = new javax.swing.JLabel();
+        dlgLogIn_tfUser = new javax.swing.JTextField();
+        dlgLogIn_tfPass = new javax.swing.JTextField();
+        dlgLogIn_btnCancel = new javax.swing.JButton();
+        dlgLogIn_btnOk1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnStart1 = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -170,6 +177,67 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         dlgPeyment.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
+        dlgLogIn_lblUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dlgLogIn_lblUser.setText("User name:");
+
+        dlgLogin_lblPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dlgLogin_lblPassword.setText("password:");
+
+        dlgLogIn_btnCancel.setText("Cancele");
+        dlgLogIn_btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgLogIn_btnCancelActionPerformed(evt);
+            }
+        });
+
+        dlgLogIn_btnOk1.setText("OK");
+        dlgLogIn_btnOk1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgLogIn_btnOk1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlgLogInLayout = new javax.swing.GroupLayout(dlgLogIn.getContentPane());
+        dlgLogIn.getContentPane().setLayout(dlgLogInLayout);
+        dlgLogInLayout.setHorizontalGroup(
+            dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgLogInLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dlgLogin_lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dlgLogIn_lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dlgLogIn_tfUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dlgLogIn_tfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgLogInLayout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addComponent(dlgLogIn_btnOk1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(dlgLogIn_btnCancel)
+                .addGap(112, 112, 112))
+        );
+        dlgLogInLayout.setVerticalGroup(
+            dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgLogInLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dlgLogIn_lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dlgLogInLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(dlgLogIn_tfUser)))
+                .addGap(18, 18, 18)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dlgLogin_lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dlgLogIn_tfPass))
+                .addGap(39, 39, 39)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dlgLogIn_btnCancel)
+                    .addComponent(dlgLogIn_btnOk1))
+                .addGap(27, 27, 27))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_END);
@@ -196,10 +264,6 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel1.add(btnStart);
         btnStart.setBounds(270, 240, 180, 60);
 
-        jLabel4.setText("jLabel4");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(0, 0, 230, 110);
-
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
@@ -208,6 +272,16 @@ public class OrderingSystem extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("log in");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -237,6 +311,40 @@ public class OrderingSystem extends javax.swing.JFrame {
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnStart1ActionPerformed
+
+    private void dlgLogIn_btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgLogIn_btnCancelActionPerformed
+        // TODO add your handling code here:
+        dlgLogIn.setVisible(false);
+    }//GEN-LAST:event_dlgLogIn_btnCancelActionPerformed
+
+    private void dlgLogIn_btnOk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgLogIn_btnOk1ActionPerformed
+        // TODO add your handling code here:
+       // String user=dlgLogIn_tfUser.getText().toLowerCase();
+       // String pass=dlgLogIn_tfPass.getText().toLowerCase();
+//        if(user=="admin"){
+//            
+//            if(pass="admin")
+//                dlgadmin.setVisible(true);
+//        }
+//                        
+//        
+//        }
+//    else
+    
+    }//GEN-LAST:event_dlgLogIn_btnOk1ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        
+      
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        
+        dlgLogIn.pack();
+        dlgLogIn.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -276,6 +384,13 @@ public class OrderingSystem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
     private javax.swing.JButton btnStart1;
+    private javax.swing.JDialog dlgLogIn;
+    private javax.swing.JButton dlgLogIn_btnCancel;
+    private javax.swing.JButton dlgLogIn_btnOk1;
+    private javax.swing.JLabel dlgLogIn_lblUser;
+    private javax.swing.JTextField dlgLogIn_tfPass;
+    private javax.swing.JTextField dlgLogIn_tfUser;
+    private javax.swing.JLabel dlgLogin_lblPassword;
     private javax.swing.JMenuItem dlgMe_Cold;
     private javax.swing.JMenuItem dlgMe_Dessert;
     private javax.swing.JMenuItem dlgMe_Hot;
@@ -291,7 +406,6 @@ public class OrderingSystem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
