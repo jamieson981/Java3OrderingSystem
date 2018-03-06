@@ -1,4 +1,7 @@
 
+import Models.MenuDishOrder;
+import Models.MenuItem;
+import Services.MenuService;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -6,12 +9,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -25,8 +27,10 @@ import javax.swing.JOptionPane;
 public class WelcomeToResMenu extends javax.swing.JFrame {
 
   
-    public static final String DBUSER = "restaurant";
-    public static final String DBPASS = "as5SRxjW5Roq3kbx";
+    //public static final String DBUSER = "restaurant";
+    //public static final String DBPASS = "as5SRxjW5Roq3kbx";
+    public static final String DBUSER = "alexJamieson";
+    public static final String DBPASS = "JavaProject";
     private Connection conn;
     DefaultListModel<MenuDishOrder> menuListModel = new DefaultListModel<>();
 //    BigDecimal total =BigDecimal.ZERO;
@@ -35,21 +39,14 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
        ImageIcon iconLogo;
 
     public WelcomeToResMenu() {
-   
-           
             initComponents();
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection("jdbc:mysql://localhost/restaurant", DBUSER, DBPASS);
-            } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null,
-                        ex.getMessage(),
-                        "Database access error",
-                        JOptionPane.ERROR_MESSAGE);
-            } catch (SQLException ex) {
-                Logger.getLogger(WelcomeToResMenu.class.getName()).log(Level.SEVERE, null, ex);
+            
+            MenuService mService = new MenuService();
+            List<MenuItem> items = mService.getItemsByCategory("STARTERS");
+            
+            for (MenuItem it : items) {
+                System.out.println(it.getItemName());
             }
-
         
     }
     
@@ -448,9 +445,9 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     
     }
 //    total=total.add(new BigDecimal(dlg_tfPrice.getText()));
- for(MenuDishOrder addItem:ao){
-    total=total.add(addItem.price);
- }
+// for(MenuDishOrder addItem:ao){
+//    total=total.add(addItem.price);
+// }
 
             dlg_tfPayment.setText((String.valueOf(total)));
         } catch (Exception e) {
@@ -658,8 +655,8 @@ int currIndex = -1;
             return;
         }
         
-        total=total.subtract(menuListModel.getElementAt(currIndex).price);
-        dlg_tfPayment.setText((String.valueOf(total)));
+//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
+//        dlg_tfPayment.setText((String.valueOf(total)));
         menuListModel.remove(currIndex);
     }//GEN-LAST:event_dlg_btDeleteActionPerformed
 

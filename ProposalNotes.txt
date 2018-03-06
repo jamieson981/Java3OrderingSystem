@@ -17,7 +17,7 @@ orderItemsId FK
 menuItems:
 ID PK
 itemName
-category ENUM ("drinks", "starters", "main dishes", "desserts", "drinks")
+category ENUM ("drinks", "starters", "main dishes", "desserts")
 photos BLOB
 price 
 
