@@ -102,3 +102,13 @@ also push/commit to git (i forgot to do it yesterday)
 linking everything with the new DB
 
 
+<<03-06-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+Fixed the problem made calculating part fixed the picture size
+2. What I plan to do from this scrum to the next? (next 24 hours)
+adding the pictur making relation between Ui and database and testing functionallity and probably fix the problem
+if i have time addig game page for when the customer is wating the order
+3. Where do I need assistance? What do I need to figure out?
+for last test
+
+
