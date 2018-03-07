@@ -173,6 +173,11 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlg_lblFoodName.setText(".");
 
         dlg_tfPayment.setEditable(false);
+        dlg_tfPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlg_tfPaymentActionPerformed(evt);
+            }
+        });
 
         dlg_tfIngredience.setEditable(false);
 
@@ -608,12 +613,17 @@ int currIndex = -1;
                         "Input data error",
                         JOptionPane.ERROR_MESSAGE);
         }
-                
-                
-
-
-
+        
     }//GEN-LAST:event_dlgPayment_SaveActionPerformed
+
+    private void dlg_tfPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_tfPaymentActionPerformed
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_dlg_tfPaymentActionPerformed
 
     /**
      * @param args the command line arguments
