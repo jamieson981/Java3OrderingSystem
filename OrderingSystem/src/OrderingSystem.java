@@ -25,15 +25,28 @@ public class OrderingSystem extends javax.swing.JFrame {
     public OrderingSystem() {
         initComponents();
         
+        //Centrize the Form
+        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+        
+        //change the color of buttons
        btnorder.setBackground(Color.DARK_GRAY);
        btnGame.setBackground(Color.DARK_GRAY);
        
+       //add date and time to the status bar
        
        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
        Calendar cal = Calendar.getInstance();
        dlgMenu_lblDate.setText(dateFormat.format(cal.getTime()));
+       
+       
+       
+       
+     //add image to the button  
+//    ImageIcon water = new ImageIcon("water.bmp");
+//    JButton button = new JButton(water);
+//    frame.add(button);
         
         
     }
@@ -108,13 +121,17 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(30, 30, 160, 310);
 
+        dlg_tfTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         dlg_tfTotal.setText("00.00");
         jPanel2.add(dlg_tfTotal);
         dlg_tfTotal.setBounds(110, 360, 80, 30);
 
         dlg_btnRemove.setText("remove");
+        dlg_btnRemove.setMaximumSize(new java.awt.Dimension(75, 23));
+        dlg_btnRemove.setMinimumSize(new java.awt.Dimension(75, 23));
+        dlg_btnRemove.setPreferredSize(new java.awt.Dimension(75, 23));
         jPanel2.add(dlg_btnRemove);
-        dlg_btnRemove.setBounds(440, 360, 69, 23);
+        dlg_btnRemove.setBounds(440, 360, 80, 23);
 
         dlg_btnPeyment.setText("peyment");
         jPanel2.add(dlg_btnPeyment);
@@ -142,8 +159,9 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel2.add(dlgmenu_lblPic3);
         dlgmenu_lblPic3.setBounds(400, 50, 90, 100);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
+        jLabel6.setPreferredSize(new java.awt.Dimension(700, 500));
         jPanel2.add(jLabel6);
         jLabel6.setBounds(0, 0, 700, 460);
 
@@ -296,7 +314,7 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel1.add(btnGame);
         btnGame.setBounds(270, 240, 180, 60);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 700, 450);
