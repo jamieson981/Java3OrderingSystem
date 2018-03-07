@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/Models/MenuItem.java</file>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/Models/OrderItems.java</file>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/Services/MenuService.java</file>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/Models/CustOrder.java</file>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/Models/TableNumber.java</file>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/WelcomeToResMenu.java</file>
-            <file>file:/E:/Java3Project/prgMenuRestaurant/src/Models/MenuDishOrder.java</file>
+            <file>file:/D:/Java3Project/prgMenuRestaurant/src/WelcomeToResMenu.java</file>
         </group>
->>>>>>> 13246cda00b237c8c9395c7b5e79a422857c2619
     </open-files>
 </project-private>
