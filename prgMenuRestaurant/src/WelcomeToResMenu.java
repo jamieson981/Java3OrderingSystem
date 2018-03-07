@@ -172,6 +172,8 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
         dlg_lblFoodName.setText(".");
 
+        dlg_tfPayment.setEditable(false);
+
         dlg_tfIngredience.setEditable(false);
 
         dlg_lblIngredience.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
