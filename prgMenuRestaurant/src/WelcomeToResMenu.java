@@ -38,6 +38,10 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     public WelcomeToResMenu() {
         initComponents();
+        menuListModel.add(0, new MenuItem()); 
+        menuListModel.add(1, new MenuItem()); 
+        menuListModel.add(2, new MenuItem()); 
+        menuListModel.add(3, new MenuItem());
         fillMenu(dlg_cbDrink, "Drinks");
         fillMenu(dlg_cbMainCourse, "Mains");
         fillMenu(dlg_cbStarter, "Starters");

@@ -59,6 +59,9 @@ public class MenuItem {
     }
     
     public String toString(){
+        if (itemName == null || price == null) {
+            return ("");
+        }
        return String.format("%s - $%.2f",itemName ,price);
     }
 
