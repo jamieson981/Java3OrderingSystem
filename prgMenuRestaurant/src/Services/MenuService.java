@@ -75,4 +75,31 @@ public class MenuService {
         
         return items;
     }
+    
+        public MenuItem getItemByName(String itemName) {
+        MenuItem item = new MenuItem();
+        DBService dbservice = new DBService();
+        Connection conn = dbservice.connect();
+        
+        String sql = "SELECT * FROM MenuItem where itemName = ? LIMIT 1";        
+        PreparedStatement stmt;
+        
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1,itemName);
+            ResultSet set = stmt.executeQuery();
+            while (set.next()) {
+                item.setId(set.getInt("id"));
+                item.setItemName(set.getString("itemName"));
+                item.setCategory(set.getString("category"));
+                item.setPhoto(set.getString("photo"));
+                item.setPrice(set.getBigDecimal("price"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        
+        return item;
+    }
 }

@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -29,22 +30,30 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 //    public static final String DBUSER = "alexJamieson";
 //    public static final String DBPASS = "JavaProject";
     private Connection conn;
-    DefaultListModel<MenuDishOrder> menuListModel = new DefaultListModel<>();
+    DefaultListModel<MenuItem> menuListModel = new DefaultListModel<>();
 //    BigDecimal total =BigDecimal.ZERO;
     
      
        ImageIcon iconLogo;
 
     public WelcomeToResMenu() {
-            initComponents();
-            
-            MenuService mService = new MenuService();
-            List<MenuItem> items = mService.getItemsByCategory("STARTERS");
-            
-            for (MenuItem it : items) {
-                System.out.println(it.getItemName());
-            }
-        
+        initComponents();
+        fillMenu(dlg_cbDrink, "Drinks");
+        fillMenu(dlg_cbMainCourse, "Mains");
+        fillMenu(dlg_cbStarter, "Starters");
+        fillMenu(dlg_cbDessert, "Desserts");
+    }
+    
+    public void fillMenu(javax.swing.JComboBox<String> cBox, String category) {
+        MenuService mService = new MenuService();
+        List<MenuItem> items = mService.getItemsByCategory(category);
+        ArrayList<String> itemNames = new ArrayList<String>();
+        itemNames.add("");
+        for (MenuItem it : items) {
+             itemNames.add(it.getItemName());
+//           System.out.println(it.getItemName());
+        }
+        cBox.setModel(new DefaultComboBoxModel(itemNames.toArray()));
     }
     
     public void addToOrder(String order){
@@ -112,7 +121,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlg_lblStarter.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         dlg_lblStarter.setText("STARTER");
 
-        dlg_cbStarter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ceps", "Truffle", "FoieGras", "Pudding" }));
         dlg_cbStarter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dlg_cbStarterActionPerformed(evt);
@@ -432,19 +440,17 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     private void dlg_btOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btOrderActionPerformed
     try {
-            ArrayList<MenuDishOrder> ao=new ArrayList<>();
-   MenuDishOrder a =new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
-    ao.add(a);
+        ArrayList<MenuDishOrder> ao = new ArrayList<>();
+        MenuDishOrder a = new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
+        ao.add(a);
     
-    for(MenuDishOrder addorder:ao){
-    menuListModel.addElement(addorder);
-    
-    
-    }
+        for(MenuDishOrder addorder:ao){
+//            menuListModel.addElement(addorder);
+        }
 //    total=total.add(new BigDecimal(dlg_tfPrice.getText()));
 // for(MenuDishOrder addItem:ao){
 //    total=total.add(addItem.price);
-// }
+// }//@TODO: dothis tmr
 
             dlg_tfPayment.setText((String.valueOf(total)));
         } catch (Exception e) {
@@ -472,165 +478,58 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btOrderActionPerformed
 
     private void dlg_cbStarterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbStarterActionPerformed
-
-        addToOrder((String) dlg_cbStarter.getSelectedItem());
-                    
-        ImageIcon iconLogo;
-
-        switch  ((String) dlg_cbStarter.getSelectedItem()){
-            
-            case "Ceps":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\ceps.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Truffle":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\truffle.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "FoieGras":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\foie.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Pudding":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\pudding.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  
-                  default:
-                      iconLogo = new ImageIcon("img\\img.jpg");
+       
+        try {
+            menuListModel.remove(0);
+        } catch(IndexOutOfBoundsException e){
+            // do nothing
         }
+        if (!((String)dlg_cbStarter.getSelectedItem()).equals("")) {
+            MenuService mService = new MenuService();
+            MenuItem item = mService.getItemByName((String)dlg_cbStarter.getSelectedItem());        
+            menuListModel.add(0, item);
+        } 
+        
+        
     }//GEN-LAST:event_dlg_cbStarterActionPerformed
 
     private void dlg_cbMainCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbMainCourseActionPerformed
-        // TODO add your handling code here:
-        addToOrder((String) dlg_cbMainCourse.getSelectedItem());
-        
-        switch  ((String) dlg_cbMainCourse.getSelectedItem()){
-            
-            case "Chicken":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Chicken.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Pork":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\pork.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Duck":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Duck.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Fish":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Fish.jpg");
-                // In init() method write this codeDuck.jpg");
-
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  
-                  default:
-                      iconLogo = new ImageIcon("img\\img.jpg");
+        try {
+            menuListModel.remove(1);
+        } catch(IndexOutOfBoundsException e){
+            // do nothing
         }
+        if (!((String)dlg_cbMainCourse.getSelectedItem()).equals("")) {
+            MenuService mService = new MenuService();
+            MenuItem item = mService.getItemByName((String)dlg_cbMainCourse.getSelectedItem());        
+            menuListModel.add(1, item);
+        } 
     }//GEN-LAST:event_dlg_cbMainCourseActionPerformed
 
     private void dlg_cbDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbDessertActionPerformed
-        // TODO add your handling code here:
-        addToOrder((String) dlg_cbDessert.getSelectedItem());
-        switch  ((String) dlg_cbDessert.getSelectedItem()){
-            
-            case "Clafoutis":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Clafoutis.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Profiterole":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Profiterole.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Souffle":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Souffle.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Mousse":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Mousse.jpg");
-                // In init() method write this codeDuck.jpg");
-
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  
-                  default:
-                      iconLogo = new ImageIcon("img\\img.jpg");
+       try {
+            menuListModel.remove(2);
+        } catch(IndexOutOfBoundsException e){
+            // do nothing
         }
+        if (!((String)dlg_cbDessert.getSelectedItem()).equals("")) {
+            MenuService mService = new MenuService();
+            MenuItem item = mService.getItemByName((String)dlg_cbDessert.getSelectedItem());        
+            menuListModel.add(2, item);
+        } 
     }//GEN-LAST:event_dlg_cbDessertActionPerformed
 
     private void dlg_cbDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbDrinkActionPerformed
-        // TODO add your handling code here:(String) dlg_cbStarter.getSelectedItem()
-        addToOrder((String) dlg_cbDrink.getSelectedItem());
-        switch  ((String) dlg_cbDrink.getSelectedItem()){
-        case "Martini":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Martini.jpg");
-                // In init() method cbDrinkwrite this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Lagoon":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Lagoon.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "Serena":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\Serena.jpg");
-                // In init() method write this code
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  case "SeaBreeze":
-                
-                // Import ImageIcon     
-                   iconLogo = new ImageIcon("img\\SeaBreeze.jpg");
-                // In init() method write this codeDuck.jpg");
-
-                  dlg_lblImage.setIcon(iconLogo);
-                  break;
-                  
-                  default:
-                      iconLogo = new ImageIcon("img\\img.jpg");
+        try {
+            menuListModel.remove(3);
+        } catch(IndexOutOfBoundsException e){
+            // do nothing
         }
+        if (!((String)dlg_cbDrink.getSelectedItem()).equals("")) {
+            MenuService mService = new MenuService();
+            MenuItem item = mService.getItemByName((String)dlg_cbDrink.getSelectedItem());        
+            menuListModel.add(3, item);
+        } 
     }//GEN-LAST:event_dlg_cbDrinkActionPerformed
 int currIndex = -1;
     private void lstMenuMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstMenuMouseReleased
@@ -789,6 +688,6 @@ int currIndex = -1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWelcome;
-    private javax.swing.JList<MenuDishOrder> lstMenu;
+    private javax.swing.JList<MenuItem> lstMenu;
     // End of variables declaration//GEN-END:variables
 }

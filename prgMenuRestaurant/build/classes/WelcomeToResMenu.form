@@ -147,16 +147,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="dlg_cbStarter">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Ceps"/>
-                <StringItem index="1" value="Truffle"/>
-                <StringItem index="2" value="FoieGras"/>
-                <StringItem index="3" value="Pudding"/>
-              </StringArray>
-            </Property>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dlg_cbStarterActionPerformed"/>
           </Events>
@@ -262,7 +252,7 @@
                 <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lstMenuMouseReleased"/>
               </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;MenuDishOrder&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;MenuItem&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>

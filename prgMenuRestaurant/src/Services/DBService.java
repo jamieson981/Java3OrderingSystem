@@ -28,7 +28,6 @@ public class DBService {
         try {
                 Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://159.203.101.106/orderingSystem", DBUSER, DBPASS);
-                System.out.println("test");
         } catch (ClassNotFoundException ex) {
                 JOptionPane.showMessageDialog(null,
                         ex.getMessage(),

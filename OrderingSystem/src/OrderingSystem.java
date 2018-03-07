@@ -91,8 +91,6 @@ public class OrderingSystem extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
-        dlgMenu.setPreferredSize(new java.awt.Dimension(700, 500));
-
         dlgMenu_lblDate.setText("jLabel2");
         dlgMenu.getContentPane().add(dlgMenu_lblDate, java.awt.BorderLayout.PAGE_END);
 
@@ -142,7 +140,6 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel2.add(dlgmenu_lblPic3);
         dlgmenu_lblPic3.setBounds(400, 50, 90, 100);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel6.setText("jLabel6");
         jPanel2.add(jLabel6);
         jLabel6.setBounds(0, 0, 700, 460);
@@ -296,7 +293,6 @@ public class OrderingSystem extends javax.swing.JFrame {
         jPanel1.add(btnGame);
         btnGame.setBounds(270, 240, 180, 60);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 700, 450);
