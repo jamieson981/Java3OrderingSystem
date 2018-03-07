@@ -2,6 +2,10 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,9 +25,28 @@ public class OrderingSystem extends javax.swing.JFrame {
     public OrderingSystem() {
         initComponents();
         
+        //Centrize the Form
+        
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
-       btnStart.setBackground(Color.DARK_GRAY);
+        
+        //change the color of buttons
+       btnorder.setBackground(Color.DARK_GRAY);
+       btnGame.setBackground(Color.DARK_GRAY);
+       
+       //add date and time to the status bar
+       
+       DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+       Calendar cal = Calendar.getInstance();
+       dlgMenu_lblDate.setText(dateFormat.format(cal.getTime()));
+       
+       
+       
+       
+     //add image to the button  
+//    ImageIcon water = new ImageIcon("water.bmp");
+//    JButton button = new JButton(water);
+//    frame.add(button);
         
         
     }
@@ -38,7 +61,7 @@ public class OrderingSystem extends javax.swing.JFrame {
     private void initComponents() {
 
         dlgMenu = new javax.swing.JDialog();
-        jLabel2 = new javax.swing.JLabel();
+        dlgMenu_lblDate = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         dlg_lstOrder = new javax.swing.JList<>();
@@ -46,6 +69,10 @@ public class OrderingSystem extends javax.swing.JFrame {
         dlg_btnRemove = new javax.swing.JButton();
         dlg_btnPeyment = new javax.swing.JButton();
         dlg_lblTotal = new javax.swing.JLabel();
+        dlgmenu_lblPic2 = new javax.swing.JLabel();
+        dlgmenu_lblPic1 = new javax.swing.JLabel();
+        dlgmenu_lblPic4 = new javax.swing.JLabel();
+        dlgmenu_lblPic3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -62,17 +89,23 @@ public class OrderingSystem extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        dlgLogIn = new javax.swing.JDialog();
+        dlgLogIn_lblUser = new javax.swing.JLabel();
+        dlgLogin_lblPassword = new javax.swing.JLabel();
+        dlgLogIn_tfUser = new javax.swing.JTextField();
+        dlgLogIn_tfPass = new javax.swing.JTextField();
+        dlgLogIn_btnCancel = new javax.swing.JButton();
+        dlgLogIn_btnOk1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btnStart1 = new javax.swing.JButton();
-        btnStart = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        btnorder = new javax.swing.JButton();
+        btnGame = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
-        jLabel2.setText("jLabel2");
-        dlgMenu.getContentPane().add(jLabel2, java.awt.BorderLayout.PAGE_END);
+        dlgMenu_lblDate.setText("jLabel2");
+        dlgMenu.getContentPane().add(dlgMenu_lblDate, java.awt.BorderLayout.PAGE_END);
 
         jPanel2.setLayout(null);
 
@@ -84,29 +117,54 @@ public class OrderingSystem extends javax.swing.JFrame {
         jScrollPane1.setViewportView(dlg_lstOrder);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 160, 260);
+        jScrollPane1.setBounds(30, 30, 160, 310);
 
+        dlg_tfTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         dlg_tfTotal.setText("00.00");
         jPanel2.add(dlg_tfTotal);
-        dlg_tfTotal.setBounds(90, 280, 80, 30);
+        dlg_tfTotal.setBounds(110, 360, 80, 30);
 
         dlg_btnRemove.setText("remove");
+        dlg_btnRemove.setMaximumSize(new java.awt.Dimension(75, 23));
+        dlg_btnRemove.setMinimumSize(new java.awt.Dimension(75, 23));
+        dlg_btnRemove.setPreferredSize(new java.awt.Dimension(75, 23));
         jPanel2.add(dlg_btnRemove);
-        dlg_btnRemove.setBounds(330, 290, 69, 23);
+        dlg_btnRemove.setBounds(440, 360, 80, 23);
 
         dlg_btnPeyment.setText("peyment");
         jPanel2.add(dlg_btnPeyment);
-        dlg_btnPeyment.setBounds(410, 290, 75, 23);
+        dlg_btnPeyment.setBounds(540, 360, 75, 23);
 
         dlg_lblTotal.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
         dlg_lblTotal.setForeground(new java.awt.Color(204, 204, 204));
         dlg_lblTotal.setText("Total");
         jPanel2.add(dlg_lblTotal);
-        dlg_lblTotal.setBounds(10, 280, 80, 33);
+        dlg_lblTotal.setBounds(30, 360, 80, 33);
 
+        dlgmenu_lblPic2.setText("picture");
+        jPanel2.add(dlgmenu_lblPic2);
+        dlgmenu_lblPic2.setBounds(540, 50, 90, 100);
+
+        dlgmenu_lblPic1.setText("picture");
+        jPanel2.add(dlgmenu_lblPic1);
+        dlgmenu_lblPic1.setBounds(400, 190, 90, 100);
+
+        dlgmenu_lblPic4.setText("picture");
+        jPanel2.add(dlgmenu_lblPic4);
+        dlgmenu_lblPic4.setBounds(540, 190, 90, 100);
+
+        dlgmenu_lblPic3.setText("picture");
+        jPanel2.add(dlgmenu_lblPic3);
+        dlgmenu_lblPic3.setBounds(400, 50, 90, 100);
+
+<<<<<<< HEAD
+=======
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+>>>>>>> 82a3d100fd2e78fbb633b3d281473980e1f56903
         jLabel6.setText("jLabel6");
+        jLabel6.setPreferredSize(new java.awt.Dimension(700, 500));
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(0, 0, 510, 340);
+        jLabel6.setBounds(0, 0, 700, 460);
 
         dlgMenu.getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -170,37 +228,97 @@ public class OrderingSystem extends javax.swing.JFrame {
 
         dlgPeyment.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
+        dlgLogIn_lblUser.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dlgLogIn_lblUser.setText("User name:");
+
+        dlgLogin_lblPassword.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dlgLogin_lblPassword.setText("password:");
+
+        dlgLogIn_btnCancel.setText("Cancele");
+        dlgLogIn_btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgLogIn_btnCancelActionPerformed(evt);
+            }
+        });
+
+        dlgLogIn_btnOk1.setText("OK");
+        dlgLogIn_btnOk1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgLogIn_btnOk1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dlgLogInLayout = new javax.swing.GroupLayout(dlgLogIn.getContentPane());
+        dlgLogIn.getContentPane().setLayout(dlgLogInLayout);
+        dlgLogInLayout.setHorizontalGroup(
+            dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgLogInLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dlgLogin_lblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dlgLogIn_lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dlgLogIn_tfUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dlgLogIn_tfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgLogInLayout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addComponent(dlgLogIn_btnOk1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(dlgLogIn_btnCancel)
+                .addGap(112, 112, 112))
+        );
+        dlgLogInLayout.setVerticalGroup(
+            dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dlgLogInLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dlgLogIn_lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(dlgLogInLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(dlgLogIn_tfUser)))
+                .addGap(18, 18, 18)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dlgLogin_lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dlgLogIn_tfPass))
+                .addGap(39, 39, 39)
+                .addGroup(dlgLogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dlgLogIn_btnCancel)
+                    .addComponent(dlgLogIn_btnOk1))
+                .addGap(27, 27, 27))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_END);
 
         jPanel1.setLayout(null);
 
-        btnStart1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        btnStart1.setText("Order");
-        btnStart1.addActionListener(new java.awt.event.ActionListener() {
+        btnorder.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btnorder.setText("Order");
+        btnorder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStart1ActionPerformed(evt);
+                btnorderActionPerformed(evt);
             }
         });
-        jPanel1.add(btnStart1);
-        btnStart1.setBounds(270, 150, 180, 60);
+        jPanel1.add(btnorder);
+        btnorder.setBounds(270, 150, 180, 60);
 
-        btnStart.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        btnStart.setText("Game");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
+        btnGame.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btnGame.setText("Game");
+        btnGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
+                btnGameActionPerformed(evt);
             }
         });
-        jPanel1.add(btnStart);
-        btnStart.setBounds(270, 240, 180, 60);
+        jPanel1.add(btnGame);
+        btnGame.setBounds(270, 240, 180, 60);
 
-        jLabel4.setText("jLabel4");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(0, 0, 230, 110);
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\ipd11\\Documents\\Java3OrderingSystem\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+<<<<<<< HEAD
+=======
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+>>>>>>> 82a3d100fd2e78fbb633b3d281473980e1f56903
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 700, 450);
@@ -208,6 +326,16 @@ public class OrderingSystem extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         jMenu1.setText("log in");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -215,12 +343,12 @@ public class OrderingSystem extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+    private void btnGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGameActionPerformed
         // TODO add your handling code here:
         
         dlgMenu.pack();
         dlgMenu.setVisible(true);
-    }//GEN-LAST:event_btnStartActionPerformed
+    }//GEN-LAST:event_btnGameActionPerformed
 
     private void dlgMe_MianDishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgMe_MianDishActionPerformed
         // TODO add your handling code here:
@@ -234,9 +362,46 @@ public class OrderingSystem extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dlgMe_HotActionPerformed
 
-    private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
+    private void btnorderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnorderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnStart1ActionPerformed
+        
+        dlgMenu.pack();
+        dlgMenu.setVisible(true);
+    }//GEN-LAST:event_btnorderActionPerformed
+
+    private void dlgLogIn_btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgLogIn_btnCancelActionPerformed
+        // TODO add your handling code here:
+        dlgLogIn.setVisible(false);
+    }//GEN-LAST:event_dlgLogIn_btnCancelActionPerformed
+
+    private void dlgLogIn_btnOk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgLogIn_btnOk1ActionPerformed
+        // TODO add your handling code here:
+       // String user=dlgLogIn_tfUser.getText().toLowerCase();
+       // String pass=dlgLogIn_tfPass.getText().toLowerCase();
+//        if(user=="admin"){
+//            
+//            if(pass="admin")
+//                dlgadmin.setVisible(true);
+//        }
+//                        
+//        
+//        }
+//    else
+    
+    }//GEN-LAST:event_dlgLogIn_btnOk1ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        
+      
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        
+        dlgLogIn.pack();
+        dlgLogIn.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -274,24 +439,34 @@ public class OrderingSystem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnStart;
-    private javax.swing.JButton btnStart1;
+    private javax.swing.JButton btnGame;
+    private javax.swing.JButton btnorder;
+    private javax.swing.JDialog dlgLogIn;
+    private javax.swing.JButton dlgLogIn_btnCancel;
+    private javax.swing.JButton dlgLogIn_btnOk1;
+    private javax.swing.JLabel dlgLogIn_lblUser;
+    private javax.swing.JTextField dlgLogIn_tfPass;
+    private javax.swing.JTextField dlgLogIn_tfUser;
+    private javax.swing.JLabel dlgLogin_lblPassword;
     private javax.swing.JMenuItem dlgMe_Cold;
     private javax.swing.JMenuItem dlgMe_Dessert;
     private javax.swing.JMenuItem dlgMe_Hot;
     private javax.swing.JMenuItem dlgMe_MaineDish;
     private javax.swing.JMenuItem dlgMe_MianDish;
     private javax.swing.JDialog dlgMenu;
+    private javax.swing.JLabel dlgMenu_lblDate;
     private javax.swing.JDialog dlgPeyment;
     private javax.swing.JButton dlg_btnPeyment;
     private javax.swing.JButton dlg_btnRemove;
     private javax.swing.JLabel dlg_lblTotal;
     private javax.swing.JList<String> dlg_lstOrder;
     private javax.swing.JTextField dlg_tfTotal;
+    private javax.swing.JLabel dlgmenu_lblPic1;
+    private javax.swing.JLabel dlgmenu_lblPic2;
+    private javax.swing.JLabel dlgmenu_lblPic3;
+    private javax.swing.JLabel dlgmenu_lblPic4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;

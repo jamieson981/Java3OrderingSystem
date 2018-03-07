@@ -57,5 +57,9 @@ public class MenuItem {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+    
+    public String toString(){
+       return String.format("%s - $%.2f",itemName ,price);
+    }
 
 }
