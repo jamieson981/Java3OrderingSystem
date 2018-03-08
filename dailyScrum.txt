@@ -128,6 +128,15 @@ prepare the prepare the presentation/not complete the database  problem to make 
 3. Where do I need assistance? What do I need to figure out?
 finishing and test
 
+<<03-08-2018>> Alex Jamieson
+1. What I have done / not done since last Scrum?
+-helped prepare the presentation. 
+-got home late so i didn't have time to add addition functionality.
+2. What I plan to do from this scrum to the next? (next 24 hours)
+-finish classes in order to complete the transaction methods
+3. Where do I need assistance? What do I need to figure out?
+testing the pdf printing
+
 
 
 
