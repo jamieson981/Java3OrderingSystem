@@ -2,6 +2,7 @@
 import Models.MenuDishOrder;
 import Models.MenuItem;
 import Services.MenuService;
+import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -24,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class WelcomeToResMenu extends javax.swing.JFrame {
 
-  
+   
     //public static final String DBUSER = "restaurant";
     //public static final String DBPASS = "as5SRxjW5Roq3kbx";
 //    public static final String DBUSER = "alexJamieson";
@@ -38,6 +39,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     public WelcomeToResMenu() {
         initComponents();
+        
         menuListModel.add(0, new MenuItem()); 
         menuListModel.add(1, new MenuItem()); 
         menuListModel.add(2, new MenuItem()); 
@@ -46,6 +48,10 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         fillMenu(dlg_cbMainCourse, "Mains");
         fillMenu(dlg_cbStarter, "Starters");
         fillMenu(dlg_cbDessert, "Desserts");
+        
+         btOrder.setBackground(Color.DARK_GRAY);
+        
+        
     }
     
     public void fillMenu(javax.swing.JComboBox<String> cBox, String category) {
@@ -410,11 +416,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 0, 51));
 
-        lblWelcome.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblWelcome.setText("Welcome to swing Restaurent");
+        lblWelcome.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWelcome.setText("Welcome to swing Ordering System");
 
-        btOrder.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        btOrder.setBackground(new java.awt.Color(255, 255, 255));
+        btOrder.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btOrder.setForeground(new java.awt.Color(255, 255, 255));
         btOrder.setText("Order");
         btOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,23 +437,22 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(btOrder)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(156, 156, 156)
+                .addComponent(btOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(lblWelcome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(btOrder)
-                .addGap(81, 81, 81))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
