@@ -529,6 +529,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuItem item = mService.getItemByName((String)dlg_cbStarter.getSelectedItem());        
             menuListModel.add(0, item);
             //total=total.menuListModel.;
+            //System.out.println((item.getIngredients()));
             
         } 
         
@@ -545,6 +546,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbMainCourse.getSelectedItem());        
             menuListModel.add(1, item);
+           
         } 
     }//GEN-LAST:event_dlg_cbMainCourseActionPerformed
 

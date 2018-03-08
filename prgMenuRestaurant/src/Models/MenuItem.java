@@ -17,6 +17,15 @@ public class MenuItem {
     private String category;
     private String photo;
     private BigDecimal price;
+    private String ingredients;
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
 
     public String getCategory() {
         return category;
