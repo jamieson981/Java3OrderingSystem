@@ -120,6 +120,14 @@ relation the program with yhe data dase prepare presentation
 3. Where do I need assistance? What do I need to figure out?
 i have to speake Alex for prepare the presentation and how to seperate the part for present
 
+<<03-0-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+prepare the prepare the presentation/not complete the database  problem to make FK
+2. What I plan to do from this scrum to the next? (next 24 hours)
+ adding print pdf finish and test
+3. Where do I need assistance? What do I need to figure out?
+finishing and test
+
 
 
 
