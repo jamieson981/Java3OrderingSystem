@@ -268,27 +268,35 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dlgMenuLayout.createSequentialGroup()
-                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dlg_btBack, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dlg_btOrder, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dlg_btDelete, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dlg_btPayment, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(107, 107, 107)
                         .addComponent(dlg_lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32))
                     .addGroup(dlgMenuLayout.createSequentialGroup()
                         .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dlg_tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dlg_tfCalorie, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(dlgMenuLayout.createSequentialGroup()
                                 .addComponent(dlg_tfIngredience, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(dlg_lblIngredience)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dlg_tfPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(dlg_tfPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(dlgMenuLayout.createSequentialGroup()
+                                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dlg_tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dlg_tfCalorie, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgMenuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(dlg_btBack)
+                .addGap(55, 55, 55)
+                .addComponent(dlg_btOrder)
+                .addGap(73, 73, 73)
+                .addComponent(dlg_btDelete)
+                .addGap(64, 64, 64)
+                .addComponent(dlg_btPayment)
+                .addGap(76, 76, 76))
         );
 
         dlgMenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dlg_cbDessert, dlg_cbDrink, dlg_cbMainCourse, dlg_cbStarter});
@@ -318,23 +326,12 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                     .addComponent(dlg_cbMainCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dlg_cbDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dlg_cbDrink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(dlgMenuLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(dlgMenuLayout.createSequentialGroup()
-                                .addComponent(dlg_lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dlgMenuLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(dlg_btBack)
-                        .addGap(31, 31, 31)
-                        .addComponent(dlg_btOrder)
-                        .addGap(29, 29, 29)
-                        .addComponent(dlg_btDelete)
-                        .addGap(34, 34, 34)
-                        .addComponent(dlg_btPayment)))
+                        .addComponent(dlg_lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dlg_lblIngredience1)
@@ -349,7 +346,13 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dlg_lblCalorie)
                     .addComponent(dlg_tfCalorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dlg_btPayment)
+                    .addComponent(dlg_btDelete)
+                    .addComponent(dlg_btOrder)
+                    .addComponent(dlg_btBack))
+                .addGap(76, 76, 76))
         );
 
         jLabel1.setText("Table NO:");
@@ -525,6 +528,8 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbStarter.getSelectedItem());        
             menuListModel.add(0, item);
+            //total=total.menuListModel.;
+            
         } 
         
         
@@ -566,6 +571,13 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbDrink.getSelectedItem());        
             menuListModel.add(3, item);
+            
+//            for(MenuListModel addItem:menuListModel){
+//            total=total.add(addItem.price);
+ //}  
+            
+            
+            
         } 
     }//GEN-LAST:event_dlg_cbDrinkActionPerformed
 int currIndex = -1;
