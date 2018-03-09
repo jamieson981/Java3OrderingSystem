@@ -112,3 +112,40 @@ if i have time addig game page for when the customer is wating the order
 for last test and prepare the presentation
 
 
+<<03-07-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+UI is finished and the relation between evry form calculating part is finished
+2. What I plan to do from this scrum to the next? (next 24 hours)
+relation the program with yhe data dase prepare presentation
+3. Where do I need assistance? What do I need to figure out?
+i have to speake Alex for prepare the presentation and how to seperate the part for present
+
+<<03-8-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+prepare the prepare the presentation/not complete the database  problem to make FK
+2. What I plan to do from this scrum to the next? (next 24 hours)
+ adding print pdf finish and test
+3. Where do I need assistance? What do I need to figure out?
+finishing and test
+
+<<03-08-2018>> Alex Jamieson
+1. What I have done / not done since last Scrum?
+-helped prepare the presentation. 
+-got home late so i didn't have time to add addition functionality.
+2. What I plan to do from this scrum to the next? (next 24 hours)
+-finish classes in order to complete the transaction methods
+3. Where do I need assistance? What do I need to figure out?
+testing the pdf printing
+
+
+<<03-9-2018>> Arad Hakhamanesh
+1. What I have done / not done since last Scrum?
+fixed deatails page and peyment funtionality/dosen finish printing to pdf
+2. What I plan to do from this scrum to the next? (next 24 hours)
+ adding print pdf finish and test
+3. Where do I need assistance? What do I need to figure out?
+finishing and test
+
+
+
+

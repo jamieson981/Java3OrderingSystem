@@ -37,6 +37,7 @@ public class MenuService {
                 item.setCategory(set.getString("category"));
                 item.setPhoto(set.getString("photo"));
                 item.setPrice(set.getBigDecimal("price"));
+                item.setIngredients(set.getString("ingredients"));
                 items.add(item);
             }
         } catch (SQLException ex) {
@@ -65,7 +66,8 @@ public class MenuService {
                 item.setItemName(set.getString("itemName"));
                 item.setCategory(set.getString("category"));
                 item.setPhoto(set.getString("photo"));
-                item.setPrice(set.getBigDecimal("price"));
+                item.setPrice(set.getBigDecimal("price"));                
+                item.setIngredients(set.getString("ingredients"));
                 items.add(item);
             }
         } catch (SQLException ex) {
@@ -94,6 +96,7 @@ public class MenuService {
                 item.setCategory(set.getString("category"));
                 item.setPhoto(set.getString("photo"));
                 item.setPrice(set.getBigDecimal("price"));
+                item.setIngredients(set.getString("ingredients"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

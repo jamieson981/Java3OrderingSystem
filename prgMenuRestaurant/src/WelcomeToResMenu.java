@@ -2,6 +2,7 @@
 import Models.MenuDishOrder;
 import Models.MenuItem;
 import Services.MenuService;
+import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
@@ -24,7 +25,7 @@ import javax.swing.JOptionPane;
  */
 public class WelcomeToResMenu extends javax.swing.JFrame {
 
-  
+   
     //public static final String DBUSER = "restaurant";
     //public static final String DBPASS = "as5SRxjW5Roq3kbx";
 //    public static final String DBUSER = "alexJamieson";
@@ -35,13 +36,27 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     
      
        ImageIcon iconLogo;
+       String selectName;
+       
+       
+       
 
     public WelcomeToResMenu() {
         initComponents();
+        
+        menuListModel.add(0, new MenuItem()); 
+        menuListModel.add(1, new MenuItem()); 
+        menuListModel.add(2, new MenuItem()); 
+        menuListModel.add(3, new MenuItem());
         fillMenu(dlg_cbDrink, "Drinks");
         fillMenu(dlg_cbMainCourse, "Mains");
         fillMenu(dlg_cbStarter, "Starters");
         fillMenu(dlg_cbDessert, "Desserts");
+        
+         btOrder.setBackground(Color.DARK_GRAY);
+         
+        
+        
     }
     
     public void fillMenu(javax.swing.JComboBox<String> cBox, String category) {
@@ -65,9 +80,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             stmt.setString(1,order);
             ResultSet set = stmt.executeQuery();
             while (set.next()) {
-                dlg_tfIngredience.setText(set.getString("ingredience"));
-                dlg_tfCalorie.setText(set.getInt("calories") + "");
-                dlg_tfPrice.setText(set.getString(String.valueOf("price")));
+                
                 dlg_lblFoodName.setText(set.getString("name"));
             }
         } catch (SQLException ex) {
@@ -90,22 +103,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlg_cbDessert = new javax.swing.JComboBox<>();
         dlg_lblDrink = new javax.swing.JLabel();
         dlg_cbDrink = new javax.swing.JComboBox<>();
-        dlg_lblImage = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstMenu = new javax.swing.JList<>();
         dlg_lblFoodName = new javax.swing.JLabel();
         dlg_tfPayment = new javax.swing.JTextField();
-        dlg_tfIngredience = new javax.swing.JTextField();
         dlg_lblIngredience = new javax.swing.JLabel();
-        dlg_lblPrice = new javax.swing.JLabel();
-        dlg_lblCalorie = new javax.swing.JLabel();
-        dlg_tfPrice = new javax.swing.JTextField();
-        dlg_tfCalorie = new javax.swing.JTextField();
         dlg_btBack = new javax.swing.JButton();
         dlg_btOrder = new javax.swing.JButton();
         dlg_btPayment = new javax.swing.JButton();
         dlg_btDelete = new javax.swing.JButton();
-        dlg_lblIngredience1 = new javax.swing.JLabel();
         dlgPayment = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -115,8 +121,28 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgPayment_cbMethod = new javax.swing.JComboBox<>();
         dlgPayment_Save = new javax.swing.JButton();
         dlgPayment_lblCalendar = new javax.swing.JLabel();
+        dlgPayment_Recipt = new javax.swing.JButton();
+        dlgDetails = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        dlgDtails_lblName = new javax.swing.JLabel();
+        dlgDetails_lblPic = new javax.swing.JLabel();
+        dlgDetails_lblIngredients = new javax.swing.JLabel();
+        dlgDetails_Pric = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        dlgDetails_btnOK = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
         lblWelcome = new javax.swing.JLabel();
         btOrder = new javax.swing.JButton();
+
+        dlgMenu.setPreferredSize(new java.awt.Dimension(600, 600));
+        dlgMenu.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                dlgMenuWindowOpened(evt);
+            }
+        });
 
         dlg_lblStarter.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         dlg_lblStarter.setText("STARTER");
@@ -168,26 +194,21 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
         dlg_lblFoodName.setText(".");
 
-        dlg_tfIngredience.setEditable(false);
+        dlg_tfPayment.setEditable(false);
+        dlg_tfPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlg_tfPaymentActionPerformed(evt);
+            }
+        });
 
         dlg_lblIngredience.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         dlg_lblIngredience.setText("total");
-
-        dlg_lblPrice.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        dlg_lblPrice.setText("Price");
-
-        dlg_lblCalorie.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        dlg_lblCalorie.setText("Calorie");
-
-        dlg_tfPrice.setEditable(false);
-
-        dlg_tfCalorie.setEditable(false);
 
         dlg_btBack.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         dlg_btBack.setText("Back");
 
         dlg_btOrder.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        dlg_btOrder.setText("Order");
+        dlg_btOrder.setText("Detail");
         dlg_btOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dlg_btOrderActionPerformed(evt);
@@ -210,82 +231,56 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             }
         });
 
-        dlg_lblIngredience1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        dlg_lblIngredience1.setText("Ingredience");
-
         javax.swing.GroupLayout dlgMenuLayout = new javax.swing.GroupLayout(dlgMenu.getContentPane());
         dlgMenu.getContentPane().setLayout(dlgMenuLayout);
         dlgMenuLayout.setHorizontalGroup(
             dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgMenuLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(dlgMenuLayout.createSequentialGroup()
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(dlgMenuLayout.createSequentialGroup()
+                        .addGap(0, 100, Short.MAX_VALUE)
                         .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dlg_lblStarter)
-                            .addComponent(dlg_cbStarter, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(dlgMenuLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(dlg_cbMainCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgMenuLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(dlg_lblMainCourse)))
-                        .addGap(41, 41, 41)
+                                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dlg_lblStarter)
+                                    .addComponent(dlg_cbStarter, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(dlgMenuLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(dlg_cbMainCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgMenuLayout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(dlg_lblMainCourse)))
+                                .addGap(41, 41, 41)
+                                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dlg_lblDessert)
+                                    .addComponent(dlg_cbDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dlg_lblFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dlg_cbDrink, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dlg_lblDrink, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(dlgMenuLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
                         .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dlg_lblDessert)
-                            .addComponent(dlg_cbDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(dlg_lblFoodName, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dlg_cbDrink, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dlg_lblDrink, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(dlgMenuLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(dlg_lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-            .addGroup(dlgMenuLayout.createSequentialGroup()
-                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dlgMenuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(dlg_lblCalorie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dlg_lblIngredience1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dlg_lblPrice, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dlg_tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dlg_tfCalorie, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(dlg_btDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dlg_btOrder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dlg_btPayment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                            .addComponent(dlg_btBack, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(dlgMenuLayout.createSequentialGroup()
-                                .addComponent(dlg_tfIngredience, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(dlg_lblIngredience)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dlg_tfPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dlgMenuLayout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(dlg_btBack)
-                        .addGap(42, 42, 42)
-                        .addComponent(dlg_btOrder)
-                        .addGap(38, 38, 38)
-                        .addComponent(dlg_btPayment)
-                        .addGap(45, 45, 45)
-                        .addComponent(dlg_btDelete)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                                .addComponent(dlg_lblIngredience, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dlg_tfPayment))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         dlgMenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dlg_cbDessert, dlg_cbDrink, dlg_cbMainCourse, dlg_cbStarter});
 
         dlgMenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dlg_lblDessert, dlg_lblDrink, dlg_lblMainCourse, dlg_lblStarter});
-
-        dlgMenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dlg_lblImage, jScrollPane1});
-
-        dlgMenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dlg_btBack, dlg_btDelete, dlg_btOrder, dlg_btPayment});
-
-        dlgMenuLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {dlg_lblIngredience, dlg_lblPrice});
 
         dlgMenuLayout.setVerticalGroup(
             dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,31 +299,25 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                     .addComponent(dlg_cbMainCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dlg_cbDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dlg_cbDrink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dlg_lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dlgMenuLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(dlg_btBack)
+                        .addGap(36, 36, 36)
+                        .addComponent(dlg_btOrder)
+                        .addGap(41, 41, 41)
+                        .addComponent(dlg_btDelete)
+                        .addGap(33, 33, 33)
+                        .addComponent(dlg_btPayment)
+                        .addGap(77, 77, 77))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgMenuLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dlg_lblIngredience1)
-                    .addComponent(dlg_tfIngredience, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dlg_lblIngredience)
                     .addComponent(dlg_tfPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
-                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dlg_lblPrice)
-                    .addComponent(dlg_tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dlg_lblCalorie)
-                    .addComponent(dlg_tfCalorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dlg_btBack)
-                    .addComponent(dlg_btOrder)
-                    .addComponent(dlg_btPayment)
-                    .addComponent(dlg_btDelete))
-                .addGap(28, 28, 28))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         jLabel1.setText("Table NO:");
@@ -345,6 +334,13 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgPayment_Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dlgPayment_SaveActionPerformed(evt);
+            }
+        });
+
+        dlgPayment_Recipt.setText("Save & print");
+        dlgPayment_Recipt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgPayment_ReciptActionPerformed(evt);
             }
         });
 
@@ -366,15 +362,19 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(dlgPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dlgPayment_tfTotal)
-                            .addComponent(dlgPayment_tfTable)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgPaymentLayout.createSequentialGroup()
-                        .addComponent(dlgPayment_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                            .addComponent(dlgPayment_tfTable))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgPaymentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dlgPayment_lblCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(75, 75, 75)
+                .addGroup(dlgPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgPaymentLayout.createSequentialGroup()
+                        .addComponent(dlgPayment_lblCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgPaymentLayout.createSequentialGroup()
+                        .addComponent(dlgPayment_Recipt, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dlgPayment_Save)
+                        .addGap(83, 83, 83))))
         );
         dlgPaymentLayout.setVerticalGroup(
             dlgPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,17 +393,87 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                 .addGroup(dlgPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dlgPayment_cbMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(dlgPayment_Save)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGroup(dlgPaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dlgPayment_Save)
+                    .addComponent(dlgPayment_Recipt))
+                .addGap(36, 36, 36))
         );
 
+        dlgDetails.setPreferredSize(new java.awt.Dimension(600, 450));
+        dlgDetails.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                dlgDetailsWindowOpened(evt);
+            }
+        });
+
+        jLabel4.setText("jLabel4");
+        dlgDetails.getContentPane().add(jLabel4, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel1.setLayout(null);
+
+        dlgDtails_lblName.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        dlgDtails_lblName.setForeground(new java.awt.Color(255, 255, 255));
+        dlgDtails_lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dlgDtails_lblName.setText("jLabel11");
+        jPanel1.add(dlgDtails_lblName);
+        dlgDtails_lblName.setBounds(150, 20, 300, 40);
+        jPanel1.add(dlgDetails_lblPic);
+        dlgDetails_lblPic.setBounds(130, 70, 330, 150);
+
+        dlgDetails_lblIngredients.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        dlgDetails_lblIngredients.setForeground(new java.awt.Color(255, 255, 255));
+        dlgDetails_lblIngredients.setText("jLabel9");
+        jPanel1.add(dlgDetails_lblIngredients);
+        dlgDetails_lblIngredients.setBounds(230, 230, 330, 19);
+
+        dlgDetails_Pric.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        dlgDetails_Pric.setForeground(new java.awt.Color(255, 255, 255));
+        dlgDetails_Pric.setText("jLabel8");
+        jPanel1.add(dlgDetails_Pric);
+        dlgDetails_Pric.setBounds(230, 280, 200, 19);
+
+        jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Price:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(120, 280, 50, 20);
+
+        jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Ingredients: ");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(110, 230, 90, 19);
+
+        dlgDetails_btnOK.setText("OK");
+        dlgDetails_btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgDetails_btnOKActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dlgDetails_btnOK);
+        dlgDetails_btnOK.setBounds(260, 320, 100, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(0, 0, 590, 410);
+
+        dlgDetails.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        dlgDetails.setJMenuBar(jMenuBar1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 0, 51));
 
-        lblWelcome.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblWelcome.setText("Welcome to swing Restaurent");
+        lblWelcome.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblWelcome.setText("Welcome to swing Ordering System");
 
-        btOrder.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        btOrder.setBackground(new java.awt.Color(255, 255, 255));
+        btOrder.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
+        btOrder.setForeground(new java.awt.Color(255, 255, 255));
         btOrder.setText("Order");
         btOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -416,23 +486,22 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(173, 173, 173)
-                        .addComponent(btOrder)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(156, 156, 156)
+                .addComponent(btOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(lblWelcome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGap(62, 62, 62)
+                .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(btOrder)
-                .addGap(81, 81, 81))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         pack();
@@ -440,33 +509,85 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     private void dlg_btOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btOrderActionPerformed
     try {
-        ArrayList<MenuDishOrder> ao = new ArrayList<>();
-        MenuDishOrder a = new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
-        ao.add(a);
+//        ArrayList<MenuDishOrder> ao = new ArrayList<>();
+//        MenuDishOrder a = new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
+//        ao.add(a);
     
-        for(MenuDishOrder addorder:ao){
+//        for(MenuDishOrder addorder:ao){
 //            menuListModel.addElement(addorder);
-        }
+//        }
 //    total=total.add(new BigDecimal(dlg_tfPrice.getText()));
 // for(MenuDishOrder addItem:ao){
 //    total=total.add(addItem.price);
 // }//@TODO: dothis tmr
 
-            dlg_tfPayment.setText((String.valueOf(total)));
+       MenuItem selectItem=new MenuItem();
+        currIndex = lstMenu.getSelectedIndex();
+        if (currIndex == -1) {
+            JOptionPane.showMessageDialog(null,
+                    "Select One Item...",
+                    "Select One Item",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+        selectItem=lstMenu.getSelectedValue();
+        selectName=selectItem.getItemName();
+//        dlgDetails_lblName.text=selectName;
+////
+//            dlg_tfPayment.setText((String.valueOf(total)));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Order your Dish order...",
                     "Select OneItem",
                     JOptionPane.ERROR_MESSAGE);
+            
+            
+            
 
         } 
         
         
+//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
+//        dlg_tfPayment.setText((String.valueOf(total)));
+        
+        
+        
+        
+        
+//        MenuService myService = new MenuService();
+//        String itemName;
+//        
+//        MenuItem item = myService.getItemByName(itemName);
+//        ArrayList<String> itemNames = new ArrayList<String>();
+//        itemNames.add("");
+//        for (MenuItem it : items) {
+//             itemNames.add(it.getItemName());
+////           System.out.println(it.getItemName());
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
+//        dlg_tfPayment.setText((String.valueOf(total)));
+//        menuListModel.remove(currIndex);
+        
+        dlgDetails.pack();
+        
+        dlgDetails.setVisible(true);
+        currIndex = lstMenu.getSelectedIndex();
+        dlgMenu.setVisible(false);
+        
+        
+        
     
     
-    dlg_tfIngredience.setText("");
-    dlg_tfCalorie.setText("");
-    dlg_tfPrice.setText("");
+    
     dlg_lblFoodName.setText("");
     
     }//GEN-LAST:event_dlg_btOrderActionPerformed
@@ -488,6 +609,20 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbStarter.getSelectedItem());        
             menuListModel.add(0, item);
+            //total=total.menuListModel.;
+            //System.out.println((item.getIngredients()));
+            ArrayList<MenuItem> ao=new ArrayList<>();
+            ao.add(item);
+            
+            for(MenuItem addItem:ao){
+            total=total.add(addItem.getPrice());
+            dlg_tfPayment.setText((String.valueOf(total)));
+            
+            
+            }  
+            
+            
+            
         } 
         
         
@@ -503,6 +638,16 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbMainCourse.getSelectedItem());        
             menuListModel.add(1, item);
+            
+            ArrayList<MenuItem> ao=new ArrayList<>();
+            ao.add(item);
+            
+            for(MenuItem addItem:ao){
+            total=total.add(addItem.getPrice());
+            dlg_tfPayment.setText((String.valueOf(total)));
+ } 
+            
+           
         } 
     }//GEN-LAST:event_dlg_cbMainCourseActionPerformed
 
@@ -516,6 +661,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbDessert.getSelectedItem());        
             menuListModel.add(2, item);
+            
+            
+            ArrayList<MenuItem> ao=new ArrayList<>();
+            ao.add(item);
+            
+            for(MenuItem addItem:ao){
+            total=total.add(addItem.getPrice());
+            dlg_tfPayment.setText((String.valueOf(total)));
+            }
         } 
     }//GEN-LAST:event_dlg_cbDessertActionPerformed
 
@@ -529,6 +683,21 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbDrink.getSelectedItem());        
             menuListModel.add(3, item);
+            
+            ArrayList<MenuItem> ao=new ArrayList<>();
+            ao.add(item);
+            for(MenuItem addItem:ao){
+            total=total.add(addItem.getPrice());
+            dlg_tfPayment.setText((String.valueOf(total)));
+            }
+            
+////            for(MenuListModel addItem:menuListModel){
+////            total=total.add(addItem.price);
+
+// //}  
+            
+            
+            
         } 
     }//GEN-LAST:event_dlg_cbDrinkActionPerformed
 int currIndex = -1;
@@ -548,12 +717,18 @@ int currIndex = -1;
         // TODO add your handling code here:
         currIndex = lstMenu.getSelectedIndex();
         if (currIndex == -1) {
+            JOptionPane.showMessageDialog(null,
+                    "Select One Item...",
+                    "Select OneI tem",
+                    JOptionPane.ERROR_MESSAGE);
             return;
-        }
+            }
         
-//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
-//        dlg_tfPayment.setText((String.valueOf(total)));
-        menuListModel.remove(currIndex);
+
+            total=total.subtract(menuListModel.getElementAt(currIndex).getPrice());
+            dlg_tfPayment.setText((String.valueOf(total)));
+            menuListModel.remove(currIndex);
+//            }
     }//GEN-LAST:event_dlg_btDeleteActionPerformed
 
     private void dlg_btPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btPaymentActionPerformed
@@ -602,12 +777,56 @@ int currIndex = -1;
                         "Input data error",
                         JOptionPane.ERROR_MESSAGE);
         }
-                
-                
-
-
-
+        
     }//GEN-LAST:event_dlgPayment_SaveActionPerformed
+
+    private void dlg_tfPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_tfPaymentActionPerformed
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_dlg_tfPaymentActionPerformed
+
+    private void dlgPayment_ReciptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_ReciptActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlgPayment_ReciptActionPerformed
+
+    private void dlgDetails_btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgDetails_btnOKActionPerformed
+        // TODO add your handling code here:
+        
+        
+        dlgMenu.pack();
+        dlgMenu.setVisible(true);
+        dlgDetails.setVisible(false);
+        
+        
+    }//GEN-LAST:event_dlgDetails_btnOKActionPerformed
+
+    private void dlgMenuWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgMenuWindowOpened
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_dlgMenuWindowOpened
+
+    private void dlgDetailsWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDetailsWindowOpened
+        // TODO add your handling code here:
+        
+        
+        
+        dlgDtails_lblName.setText(selectName);
+        MenuService myService = new MenuService();
+        MenuItem myItem = myService.getItemByName(selectName);
+        dlgDetails_lblIngredients.setText(myItem.getIngredients());
+        dlgDetails_Pric.setText(String.valueOf(myItem.getPrice()));
+        iconLogo = new ImageIcon("image\\"+selectName+".jpg");
+                // In init() method write this code
+                  dlgDetails_lblPic.setIcon(iconLogo);
+        
+        
+        
+        
+    }//GEN-LAST:event_dlgDetailsWindowOpened
 
     /**
      * @param args the command line arguments
@@ -654,8 +873,15 @@ int currIndex = -1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btOrder;
+    private javax.swing.JDialog dlgDetails;
+    private javax.swing.JLabel dlgDetails_Pric;
+    private javax.swing.JButton dlgDetails_btnOK;
+    private javax.swing.JLabel dlgDetails_lblIngredients;
+    private javax.swing.JLabel dlgDetails_lblPic;
+    private javax.swing.JLabel dlgDtails_lblName;
     private javax.swing.JDialog dlgMenu;
     private javax.swing.JDialog dlgPayment;
+    private javax.swing.JButton dlgPayment_Recipt;
     private javax.swing.JButton dlgPayment_Save;
     private javax.swing.JComboBox<String> dlgPayment_cbMethod;
     private javax.swing.JLabel dlgPayment_lblCalendar;
@@ -669,23 +895,22 @@ int currIndex = -1;
     private javax.swing.JComboBox<String> dlg_cbDrink;
     private javax.swing.JComboBox<String> dlg_cbMainCourse;
     private javax.swing.JComboBox<String> dlg_cbStarter;
-    private javax.swing.JLabel dlg_lblCalorie;
     private javax.swing.JLabel dlg_lblDessert;
     private javax.swing.JLabel dlg_lblDrink;
     private javax.swing.JLabel dlg_lblFoodName;
-    private javax.swing.JLabel dlg_lblImage;
     private javax.swing.JLabel dlg_lblIngredience;
-    private javax.swing.JLabel dlg_lblIngredience1;
     private javax.swing.JLabel dlg_lblMainCourse;
-    private javax.swing.JLabel dlg_lblPrice;
     private javax.swing.JLabel dlg_lblStarter;
-    private javax.swing.JTextField dlg_tfCalorie;
-    private javax.swing.JTextField dlg_tfIngredience;
     private javax.swing.JTextField dlg_tfPayment;
-    private javax.swing.JTextField dlg_tfPrice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JList<MenuItem> lstMenu;

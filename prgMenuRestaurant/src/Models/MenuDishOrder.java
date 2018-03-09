@@ -16,7 +16,7 @@ public class MenuDishOrder {
     BigDecimal price;// DECIMAL(14,2)
     boolean vegetarian;//BOOLEAN in table
     //String foodtype;// {starter,main,dessert,drink}; //ENUM in table
-    int calories;
+    //int calories;
     
     public BigDecimal getPrice() {
         return price;
