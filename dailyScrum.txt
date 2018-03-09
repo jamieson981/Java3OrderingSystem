@@ -146,6 +146,15 @@ fixed deatails page and peyment funtionality/dosen finish printing to pdf
 3. Where do I need assistance? What do I need to figure out?
 finishing and test
 
-
+<<03-09-2018>> Alex Jamieson
+1. What I have done / not done since last Scrum?
+-fixed delete button
+-fixed details page 
+-did not do print to pdf
+2. What I plan to do today before sumbission?
+-make sure total is fixed 
+-test app
+3. Where do I need assistance? What do I need to figure out?
+pdf printing
 
 
