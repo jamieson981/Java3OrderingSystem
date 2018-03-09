@@ -27,3 +27,4 @@ Table no: 12; total: 15.00; Payment method: Cash Dat&time 2017/10/11 17:06:17
 Table no: 12; total: 25.99; Payment method: Cash Dat&time 2017/10/11 17:16:56
 Table no: 1; total: 43.76; Payment method: Debit Dat&time 2018/02/11 20:39:20
 Table no: 1; total: 25.99; Payment method: Debit Dat&time 2018/02/11 20:41:30
+Table no: 1; total: 24.24; Payment method: Credit Dat&time 2018/03/09 06:01:39
