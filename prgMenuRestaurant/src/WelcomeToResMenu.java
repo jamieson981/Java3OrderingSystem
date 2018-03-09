@@ -580,6 +580,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgDetails.pack();
         
         dlgDetails.setVisible(true);
+        currIndex = lstMenu.getSelectedIndex();
         dlgMenu.setVisible(false);
         
         
@@ -794,6 +795,8 @@ int currIndex = -1;
 
     private void dlgDetails_btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgDetails_btnOKActionPerformed
         // TODO add your handling code here:
+        
+        
         dlgMenu.pack();
         dlgMenu.setVisible(true);
         dlgDetails.setVisible(false);
@@ -808,6 +811,9 @@ int currIndex = -1;
 
     private void dlgDetailsWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDetailsWindowOpened
         // TODO add your handling code here:
+        
+        
+        
         dlgDtails_lblName.setText(selectName);
         MenuService myService = new MenuService();
         MenuItem myItem = myService.getItemByName(selectName);
