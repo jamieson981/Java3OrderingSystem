@@ -12,6 +12,15 @@ package Models;
 public class CustOrder {
     private int id;
     private int orderItemsId;
+    private int total;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 
     public int getId() {
         return id;

@@ -1,5 +1,5 @@
 
-import Models.MenuDishOrder;
+
 import Models.MenuItem;
 import Services.MenuService;
 import java.awt.Color;
@@ -52,9 +52,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         fillMenu(dlg_cbMainCourse, "Mains");
         fillMenu(dlg_cbStarter, "Starters");
         fillMenu(dlg_cbDessert, "Desserts");
-        
-         btOrder.setBackground(Color.DARK_GRAY);
-         
+        btOrder.setBackground(Color.DARK_GRAY);
         
         
     }
@@ -63,7 +61,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         MenuService mService = new MenuService();
         List<MenuItem> items = mService.getItemsByCategory(category);
         ArrayList<String> itemNames = new ArrayList<String>();
-        itemNames.add("");
+        itemNames.add("Pick an item");
         for (MenuItem it : items) {
              itemNames.add(it.getItemName());
 //           System.out.println(it.getItemName());
@@ -90,7 +88,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-     BigDecimal total =BigDecimal.ZERO;
+     BigDecimal total = BigDecimal.ZERO;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -106,8 +104,8 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lstMenu = new javax.swing.JList<>();
         dlg_lblFoodName = new javax.swing.JLabel();
-        dlg_tfPayment = new javax.swing.JTextField();
-        dlg_lblIngredience = new javax.swing.JLabel();
+        txt_total = new javax.swing.JTextField();
+        lbl_total = new javax.swing.JLabel();
         dlg_btBack = new javax.swing.JButton();
         dlg_btOrder = new javax.swing.JButton();
         dlg_btPayment = new javax.swing.JButton();
@@ -194,15 +192,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
         dlg_lblFoodName.setText(".");
 
-        dlg_tfPayment.setEditable(false);
-        dlg_tfPayment.addActionListener(new java.awt.event.ActionListener() {
+        txt_total.setEditable(false);
+        txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dlg_tfPaymentActionPerformed(evt);
+                txt_totalActionPerformed(evt);
             }
         });
 
-        dlg_lblIngredience.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        dlg_lblIngredience.setText("total");
+        lbl_total.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        lbl_total.setText("total");
 
         dlg_btBack.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         dlg_btBack.setText("Back");
@@ -271,9 +269,9 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(dlgMenuLayout.createSequentialGroup()
-                                .addComponent(dlg_lblIngredience, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbl_total, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dlg_tfPayment))
+                                .addComponent(txt_total))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
@@ -315,8 +313,8 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)))
                 .addGroup(dlgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dlg_lblIngredience)
-                    .addComponent(dlg_tfPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_total)
+                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
 
@@ -455,7 +453,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         jPanel1.add(dlgDetails_btnOK);
         dlgDetails_btnOK.setBounds(260, 320, 100, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
         jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.add(jLabel5);
@@ -508,87 +505,43 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dlg_btOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btOrderActionPerformed
-    try {
-//        ArrayList<MenuDishOrder> ao = new ArrayList<>();
-//        MenuDishOrder a = new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
-//        ao.add(a);
-    
-//        for(MenuDishOrder addorder:ao){
-//            menuListModel.addElement(addorder);
-//        }
-//    total=total.add(new BigDecimal(dlg_tfPrice.getText()));
-// for(MenuDishOrder addItem:ao){
-//    total=total.add(addItem.price);
-// }//@TODO: dothis tmr
-
-       MenuItem selectItem=new MenuItem();
-        currIndex = lstMenu.getSelectedIndex();
-        if (currIndex == -1) {
-            JOptionPane.showMessageDialog(null,
+        try {
+            MenuItem selectItem = new MenuItem();
+            currIndex = lstMenu.getSelectedIndex();
+            if (currIndex == -1) {
+                JOptionPane.showMessageDialog(null,
                     "Select One Item...",
                     "Select One Item",
                     JOptionPane.ERROR_MESSAGE);
-            return;
+                return;
             }
-        selectItem=lstMenu.getSelectedValue();
-        selectName=selectItem.getItemName();
-//        dlgDetails_lblName.text=selectName;
-////
-//            dlg_tfPayment.setText((String.valueOf(total)));
+            selectItem = lstMenu.getSelectedValue();
+            selectName = selectItem.getItemName();
+            System.out.println(selectName);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Order your Dish order...",
                     "Select OneItem",
                     JOptionPane.ERROR_MESSAGE);
-            
-            
-            
-
         } 
         
-        
-//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
-//        dlg_tfPayment.setText((String.valueOf(total)));
-        
-        
-        
-        
-        
-//        MenuService myService = new MenuService();
-//        String itemName;
-//        
-//        MenuItem item = myService.getItemByName(itemName);
-//        ArrayList<String> itemNames = new ArrayList<String>();
-//        itemNames.add("");
-//        for (MenuItem it : items) {
-//             itemNames.add(it.getItemName());
-////           System.out.println(it.getItemName());
-//        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
-//        dlg_tfPayment.setText((String.valueOf(total)));
-//        menuListModel.remove(currIndex);
+        if (!(selectName == null)) {
+            dlgDtails_lblName.setText(selectName);
+            MenuService myService = new MenuService();
+            MenuItem item = myService.getItemByName(selectName);
+            dlgDetails_lblIngredients.setText(item.getIngredients());
+            dlgDetails_Pric.setText(String.valueOf(item.getPrice()));
+            iconLogo = new ImageIcon("image\\"+selectName+".jpg");
+            // In init() method write this code
+            dlgDetails_lblPic.setIcon(iconLogo);
+        }                 
         
         dlgDetails.pack();
         
         dlgDetails.setVisible(true);
         currIndex = lstMenu.getSelectedIndex();
         dlgMenu.setVisible(false);
-        
-        
-        
-    
-    
-    
-    dlg_lblFoodName.setText("");
+        dlg_lblFoodName.setText("");
     
     }//GEN-LAST:event_dlg_btOrderActionPerformed
 
@@ -609,22 +562,19 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuService mService = new MenuService();
             MenuItem item = mService.getItemByName((String)dlg_cbStarter.getSelectedItem());        
             menuListModel.add(0, item);
+            
             //total=total.menuListModel.;
             //System.out.println((item.getIngredients()));
-            ArrayList<MenuItem> ao=new ArrayList<>();
-            ao.add(item);
-            
-            for(MenuItem addItem:ao){
-            total=total.add(addItem.getPrice());
-            dlg_tfPayment.setText((String.valueOf(total)));
-            
-            
-            }  
-            
-            
+//            ArrayList<MenuItem> ao=new ArrayList<>();
+//            ao.add(item);
+//            
+//            for(MenuItem addItem:ao){
+//            total=total.add(addItem.getPrice());
+//            dlg_tfPayment.setText((String.valueOf(total)));
+//            
+//            }  
             
         } 
-        
         
     }//GEN-LAST:event_dlg_cbStarterActionPerformed
 
@@ -636,19 +586,18 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         }
         if (!((String)dlg_cbMainCourse.getSelectedItem()).equals("")) {
             MenuService mService = new MenuService();
-            MenuItem item = mService.getItemByName((String)dlg_cbMainCourse.getSelectedItem());        
+            MenuItem item = mService.getItemByName((String)dlg_cbMainCourse.getSelectedItem()); 
+            
             menuListModel.add(1, item);
-            
-            ArrayList<MenuItem> ao=new ArrayList<>();
-            ao.add(item);
-            
-            for(MenuItem addItem:ao){
-            total=total.add(addItem.getPrice());
-            dlg_tfPayment.setText((String.valueOf(total)));
- } 
-            
-           
-        } 
+//            ArrayList<MenuItem> ao=new ArrayList<>();
+//            ao.add(item);
+//            
+//            for(MenuItem addItem:ao){
+//            total=total.add(addItem.getPrice());
+//            dlg_tfPayment.setText((String.valueOf(total)));
+//            }
+        }    
+
     }//GEN-LAST:event_dlg_cbMainCourseActionPerformed
 
     private void dlg_cbDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbDessertActionPerformed
@@ -663,13 +612,13 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             menuListModel.add(2, item);
             
             
-            ArrayList<MenuItem> ao=new ArrayList<>();
-            ao.add(item);
-            
-            for(MenuItem addItem:ao){
-            total=total.add(addItem.getPrice());
-            dlg_tfPayment.setText((String.valueOf(total)));
-            }
+//            ArrayList<MenuItem> ao=new ArrayList<>();
+//            ao.add(item);
+//            
+//            for(MenuItem addItem:ao){
+//            total=total.add(addItem.getPrice());
+//            dlg_tfPayment.setText((String.valueOf(total)));
+//            }
         } 
     }//GEN-LAST:event_dlg_cbDessertActionPerformed
 
@@ -684,20 +633,12 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuItem item = mService.getItemByName((String)dlg_cbDrink.getSelectedItem());        
             menuListModel.add(3, item);
             
-            ArrayList<MenuItem> ao=new ArrayList<>();
-            ao.add(item);
-            for(MenuItem addItem:ao){
-            total=total.add(addItem.getPrice());
-            dlg_tfPayment.setText((String.valueOf(total)));
-            }
-            
-////            for(MenuListModel addItem:menuListModel){
-////            total=total.add(addItem.price);
-
-// //}  
-            
-            
-            
+//            ArrayList<MenuItem> ao=new ArrayList<>();
+//            ao.add(item);
+//            for(MenuItem addItem:ao){
+//            total=total.add(addItem.getPrice());
+//            dlg_tfPayment.setText((String.valueOf(total)));
+//            }
         } 
     }//GEN-LAST:event_dlg_cbDrinkActionPerformed
 int currIndex = -1;
@@ -718,27 +659,42 @@ int currIndex = -1;
         currIndex = lstMenu.getSelectedIndex();
         if (currIndex == -1) {
             JOptionPane.showMessageDialog(null,
-                    "Select One Item...",
-                    "Select OneI tem",
-                    JOptionPane.ERROR_MESSAGE);
+                "Select One Item...",
+                "Select OneI tem",
+                JOptionPane.ERROR_MESSAGE);
             return;
-            }
-        
+        }
+        total=total.subtract(menuListModel.getElementAt(currIndex).getPrice());
+        txt_total.setText((String.valueOf(total)));
+        menuListModel.remove(currIndex);
+        menuListModel.add(currIndex, new MenuItem());
+        switch (currIndex) {
+            case 0:  dlg_cbStarter.setSelectedIndex(0);
+                     break;
+            case 1:  dlg_cbMainCourse.setSelectedIndex(0);
+                     break;
+            case 2:  dlg_cbDessert.setSelectedIndex(0);
+                     break;
+            case 3:  dlg_cbDrink.setSelectedIndex(0);
+        }
 
-            total=total.subtract(menuListModel.getElementAt(currIndex).getPrice());
-            dlg_tfPayment.setText((String.valueOf(total)));
-            menuListModel.remove(currIndex);
-//            }
     }//GEN-LAST:event_dlg_btDeleteActionPerformed
 
     private void dlg_btPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btPaymentActionPerformed
         // TODO add your handling code here:
+        if (total.doubleValue() > 0.00) {
         dlgPayment.pack();
         dlgPayment.setVisible(true);
         dlgPayment_tfTotal.setText((String.valueOf(total)));
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Calendar cal = Calendar.getInstance();
         dlgPayment_lblCalendar.setText(dateFormat.format(cal.getTime()));
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Please select items to purchase",
+                "No items on order",
+                JOptionPane.ERROR_MESSAGE);
+        }
         
         
     }//GEN-LAST:event_dlg_btPaymentActionPerformed
@@ -762,7 +718,7 @@ int currIndex = -1;
                 dlgPayment.setVisible(false);
                 menuListModel.removeAllElements();
                 total=new BigDecimal(0);
-                dlg_tfPayment.setText(" ");
+                txt_total.setText(" ");
                 
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -780,54 +736,45 @@ int currIndex = -1;
         
     }//GEN-LAST:event_dlgPayment_SaveActionPerformed
 
-    private void dlg_tfPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_tfPaymentActionPerformed
+    private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalActionPerformed
         
         
-        
-        
-        
-        
-    }//GEN-LAST:event_dlg_tfPaymentActionPerformed
+    }//GEN-LAST:event_txt_totalActionPerformed
 
     private void dlgPayment_ReciptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_ReciptActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dlgPayment_ReciptActionPerformed
 
+   
     private void dlgDetails_btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgDetails_btnOKActionPerformed
-        // TODO add your handling code here:
-        
         
         dlgMenu.pack();
         dlgMenu.setVisible(true);
         dlgDetails.setVisible(false);
-        
+        selectName = null;
         
     }//GEN-LAST:event_dlgDetails_btnOKActionPerformed
 
     private void dlgMenuWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgMenuWindowOpened
-        // TODO add your handling code here:
+      
         
     }//GEN-LAST:event_dlgMenuWindowOpened
 
+ 
     private void dlgDetailsWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDetailsWindowOpened
-        // TODO add your handling code here:
         
-        
-        
-        dlgDtails_lblName.setText(selectName);
-        MenuService myService = new MenuService();
-        MenuItem myItem = myService.getItemByName(selectName);
-        dlgDetails_lblIngredients.setText(myItem.getIngredients());
-        dlgDetails_Pric.setText(String.valueOf(myItem.getPrice()));
-        iconLogo = new ImageIcon("image\\"+selectName+".jpg");
-                // In init() method write this code
-                  dlgDetails_lblPic.setIcon(iconLogo);
-        
-        
-        
-        
+//        if (!(selectName == null)) {
+//            dlgDtails_lblName.setText(selectName);
+//            MenuService myService = new MenuService();
+//            MenuItem item = myService.getItemByName(selectName);
+//            dlgDetails_lblIngredients.setText(item.getIngredients());
+//            dlgDetails_Pric.setText(String.valueOf(item.getPrice()));
+//            iconLogo = new ImageIcon("image\\"+selectName+".jpg");
+//                    // In init() method write this code
+//                      dlgDetails_lblPic.setIcon(iconLogo);
+//        }                 
     }//GEN-LAST:event_dlgDetailsWindowOpened
-
+    
     /**
      * @param args the command line arguments
      */
@@ -898,10 +845,8 @@ int currIndex = -1;
     private javax.swing.JLabel dlg_lblDessert;
     private javax.swing.JLabel dlg_lblDrink;
     private javax.swing.JLabel dlg_lblFoodName;
-    private javax.swing.JLabel dlg_lblIngredience;
     private javax.swing.JLabel dlg_lblMainCourse;
     private javax.swing.JLabel dlg_lblStarter;
-    private javax.swing.JTextField dlg_tfPayment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -913,6 +858,8 @@ int currIndex = -1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWelcome;
+    private javax.swing.JLabel lbl_total;
     private javax.swing.JList<MenuItem> lstMenu;
+    private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }

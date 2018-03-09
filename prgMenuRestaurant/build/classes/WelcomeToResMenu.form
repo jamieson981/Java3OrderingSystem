@@ -62,9 +62,9 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="dlg_lblIngredience" min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="lbl_total" min="-2" pref="54" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="dlg_tfPayment" max="32767" attributes="0"/>
+                                  <Component id="txt_total" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane1" min="-2" pref="214" max="-2" attributes="0"/>
                           </Group>
@@ -112,8 +112,8 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="dlg_lblIngredience" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="dlg_tfPayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_total" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_total" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="253" max="32767" attributes="0"/>
               </Group>
@@ -243,15 +243,15 @@
             <Property name="text" type="java.lang.String" value="."/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="dlg_tfPayment">
+        <Component class="javax.swing.JTextField" name="txt_total">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dlg_tfPaymentActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_totalActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="dlg_lblIngredience">
+        <Component class="javax.swing.JLabel" name="lbl_total">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Trebuchet MS" size="16" style="1"/>
@@ -576,9 +576,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\arad\Documents\JavaOrderingSystemProj\OrderingSystem\image\Background6.jpg"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="jLabel5"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[800, 600]"/>
