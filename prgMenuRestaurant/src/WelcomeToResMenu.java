@@ -126,6 +126,18 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgPayment_Save = new javax.swing.JButton();
         dlgPayment_lblCalendar = new javax.swing.JLabel();
         dlgPayment_Recipt = new javax.swing.JButton();
+        dlgDetails = new javax.swing.JDialog();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        dlgDtails_lblName = new javax.swing.JLabel();
+        dlgDetails_lblPic = new javax.swing.JLabel();
+        dlgDetails_lblIngredients = new javax.swing.JLabel();
+        dlgDetails_Pic = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        dlgDetails_btnOK = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
         lblWelcome = new javax.swing.JLabel();
         btOrder = new javax.swing.JButton();
 
@@ -435,6 +447,67 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
+        dlgDetails.setPreferredSize(new java.awt.Dimension(600, 450));
+
+        jLabel4.setText("jLabel4");
+        dlgDetails.getContentPane().add(jLabel4, java.awt.BorderLayout.PAGE_END);
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel1.setLayout(null);
+
+        dlgDtails_lblName.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        dlgDtails_lblName.setForeground(new java.awt.Color(255, 255, 255));
+        dlgDtails_lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dlgDtails_lblName.setText("jLabel11");
+        jPanel1.add(dlgDtails_lblName);
+        dlgDtails_lblName.setBounds(190, 20, 90, 30);
+
+        dlgDetails_lblPic.setText("jLabel10");
+        jPanel1.add(dlgDetails_lblPic);
+        dlgDetails_lblPic.setBounds(60, 60, 430, 150);
+
+        dlgDetails_lblIngredients.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        dlgDetails_lblIngredients.setForeground(new java.awt.Color(255, 255, 255));
+        dlgDetails_lblIngredients.setText("jLabel9");
+        jPanel1.add(dlgDetails_lblIngredients);
+        dlgDetails_lblIngredients.setBounds(170, 220, 200, 19);
+
+        dlgDetails_Pic.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        dlgDetails_Pic.setForeground(new java.awt.Color(255, 255, 255));
+        dlgDetails_Pic.setText("jLabel8");
+        jPanel1.add(dlgDetails_Pic);
+        dlgDetails_Pic.setBounds(170, 260, 200, 19);
+
+        jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Price:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(100, 260, 50, 20);
+
+        jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Ingredients: ");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(60, 220, 90, 19);
+
+        dlgDetails_btnOK.setText("OK");
+        dlgDetails_btnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgDetails_btnOKActionPerformed(evt);
+            }
+        });
+        jPanel1.add(dlgDetails_btnOK);
+        dlgDetails_btnOK.setBounds(240, 300, 100, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\arad\\Documents\\JavaOrderingSystemProj\\OrderingSystem\\image\\Background6.jpg")); // NOI18N
+        jLabel5.setText("jLabel5");
+        jLabel5.setPreferredSize(new java.awt.Dimension(800, 600));
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(0, 0, 590, 410);
+
+        dlgDetails.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        dlgDetails.setJMenuBar(jMenuBar1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 0, 51));
 
@@ -480,26 +553,78 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     private void dlg_btOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btOrderActionPerformed
     try {
-        ArrayList<MenuDishOrder> ao = new ArrayList<>();
-        MenuDishOrder a = new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
-        ao.add(a);
+//        ArrayList<MenuDishOrder> ao = new ArrayList<>();
+//        MenuDishOrder a = new MenuDishOrder(dlg_lblFoodName.getText(),new BigDecimal(dlg_tfPrice.getText()));
+//        ao.add(a);
     
-        for(MenuDishOrder addorder:ao){
+//        for(MenuDishOrder addorder:ao){
 //            menuListModel.addElement(addorder);
-        }
+//        }
 //    total=total.add(new BigDecimal(dlg_tfPrice.getText()));
 // for(MenuDishOrder addItem:ao){
 //    total=total.add(addItem.price);
 // }//@TODO: dothis tmr
 
-            dlg_tfPayment.setText((String.valueOf(total)));
+       MenuItem selectItem=new MenuItem();
+        currIndex = lstMenu.getSelectedIndex();
+        if (currIndex == -1) {
+            JOptionPane.showMessageDialog(null,
+                    "Select OneItem...",
+                    "Select OneItem",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+        selectItem=lstMenu.getSelectedValue();
+        String selectName=selectItem.getItemName();
+//        dlgDetails_lblName.text=selectName;
+////
+//            dlg_tfPayment.setText((String.valueOf(total)));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                     "Order your Dish order...",
                     "Select OneItem",
                     JOptionPane.ERROR_MESSAGE);
+            
+            
+            
 
         } 
+        
+        
+//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
+//        dlg_tfPayment.setText((String.valueOf(total)));
+        
+        
+        
+        
+        
+//        MenuService myService = new MenuService();
+//        String itemName;
+//        
+//        MenuItem item = myService.getItemByName(itemName);
+//        ArrayList<String> itemNames = new ArrayList<String>();
+//        itemNames.add("");
+//        for (MenuItem it : items) {
+//             itemNames.add(it.getItemName());
+////           System.out.println(it.getItemName());
+//        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        total=total.subtract(menuListModel.getElementAt(currIndex).price);
+//        dlg_tfPayment.setText((String.valueOf(total)));
+//        menuListModel.remove(currIndex);
+        
+        dlgDetails.pack();
+        
+        dlgDetails.setVisible(true);
+        dlgMenu.setVisible(false);
         
         
     
@@ -574,9 +699,9 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuItem item = mService.getItemByName((String)dlg_cbDrink.getSelectedItem());        
             menuListModel.add(3, item);
             
-//            for(MenuListModel addItem:menuListModel){
-//            total=total.add(addItem.price);
- //}  
+////            for(MenuListModel addItem:menuListModel){
+////            total=total.add(addItem.price);
+// //}  
             
             
             
@@ -669,6 +794,15 @@ int currIndex = -1;
         // TODO add your handling code here:
     }//GEN-LAST:event_dlgPayment_ReciptActionPerformed
 
+    private void dlgDetails_btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgDetails_btnOKActionPerformed
+        // TODO add your handling code here:
+        dlgMenu.pack();
+        dlgMenu.setVisible(true);
+        dlgDetails.setVisible(false);
+        
+        
+    }//GEN-LAST:event_dlgDetails_btnOKActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -714,6 +848,12 @@ int currIndex = -1;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btOrder;
+    private javax.swing.JDialog dlgDetails;
+    private javax.swing.JLabel dlgDetails_Pic;
+    private javax.swing.JButton dlgDetails_btnOK;
+    private javax.swing.JLabel dlgDetails_lblIngredients;
+    private javax.swing.JLabel dlgDetails_lblPic;
+    private javax.swing.JLabel dlgDtails_lblName;
     private javax.swing.JDialog dlgMenu;
     private javax.swing.JDialog dlgPayment;
     private javax.swing.JButton dlgPayment_Recipt;
@@ -747,6 +887,12 @@ int currIndex = -1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWelcome;
     private javax.swing.JList<MenuItem> lstMenu;
