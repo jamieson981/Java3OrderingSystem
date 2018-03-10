@@ -641,15 +641,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     private void dlgPayment_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_SaveActionPerformed
         // TODO add your handling code here:
-        OrderService oService = new OrderService();
-        int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total);
         
-        for (int i = 0; i < menuListModel.getSize(); i++) {
-            MenuItem item = menuListModel.getElementAt(i);
-            if (item.getId() != 0) {
-                oService.saveItem(orderId, item.getId());
-            }
-        }
         
         String errors = "";
         if (!dlgPayment_tfTable.getText().matches("^[0-9]{1,2}$")||(Integer.parseInt(dlgPayment_tfTable.getText())>30)) {
@@ -660,7 +652,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         }
         //send
         if (errors.isEmpty()) {
+            OrderService oService = new OrderService();
+            int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total);
 
+            for (int i = 0; i < menuListModel.getSize(); i++) {
+                MenuItem item = menuListModel.getElementAt(i);
+                if (item.getId() != 0) {
+                    oService.saveItem(orderId, item.getId());
+                }
+            }
             try {
                 dlgMenu.setVisible(false);
                 dlgPayment.setVisible(false);
