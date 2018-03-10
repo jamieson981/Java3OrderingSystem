@@ -122,7 +122,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         lblWelcome = new javax.swing.JLabel();
         btOrder = new javax.swing.JButton();
 
-        dlgMenu.setPreferredSize(new java.awt.Dimension(600, 600));
         dlgMenu.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 dlgMenuWindowOpened(evt);
@@ -314,6 +313,11 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgPayment_tfTotal.setEditable(false);
 
         dlgPayment_cbMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None", "Credit", "Debit", "Cash", "Cheque" }));
+        dlgPayment_cbMethod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dlgPayment_cbMethodActionPerformed(evt);
+            }
+        });
 
         dlgPayment_Save.setText("Save Transaction");
         dlgPayment_Save.addActionListener(new java.awt.event.ActionListener() {
@@ -385,7 +389,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        dlgDetails.setPreferredSize(new java.awt.Dimension(600, 450));
         dlgDetails.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 dlgDetailsWindowOpened(evt);
@@ -653,8 +656,9 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         //send
         if (errors.isEmpty()) {
             OrderService oService = new OrderService();
-            int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total, dlgPayment_cbMethod.toString());
-
+            String paymentType = dlgPayment_cbMethod.getModel().getSelectedItem().toString();
+            int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total, paymentType);
+            
             for (int i = 0; i < menuListModel.getSize(); i++) {
                 MenuItem item = menuListModel.getElementAt(i);
                 if (item.getId() != 0) {
@@ -711,6 +715,10 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     private void dlgDetailsWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDetailsWindowOpened
         
     }//GEN-LAST:event_dlgDetailsWindowOpened
+
+    private void dlgPayment_cbMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_cbMethodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dlgPayment_cbMethodActionPerformed
     
     /**
      * @param args the command line arguments
