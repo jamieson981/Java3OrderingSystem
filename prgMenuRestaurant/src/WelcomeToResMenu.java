@@ -44,6 +44,12 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         btOrder.setBackground(Color.DARK_GRAY);
         
         
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        dlgDetails_lblDate.setText(dateFormat.format(cal.getTime()));
+        
+        
     }
     
     public void fillMenu(javax.swing.JComboBox<String> cBox, String category) {
@@ -108,7 +114,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgPayment_lblCalendar = new javax.swing.JLabel();
         dlgPayment_Recipt = new javax.swing.JButton();
         dlgDetails = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
+        dlgDetails_lblDate = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         dlgDtails_lblName = new javax.swing.JLabel();
         dlgDetails_lblPic = new javax.swing.JLabel();
@@ -122,8 +128,10 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         lblWelcome = new javax.swing.JLabel();
         btOrder = new javax.swing.JButton();
 
-        dlgMenu.setPreferredSize(new java.awt.Dimension(600, 600));
         dlgMenu.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                dlgMenuWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 dlgMenuWindowOpened(evt);
             }
@@ -385,21 +393,19 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        dlgDetails.setPreferredSize(new java.awt.Dimension(600, 450));
         dlgDetails.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 dlgDetailsWindowOpened(evt);
             }
         });
 
-        jLabel4.setText("jLabel4");
-        dlgDetails.getContentPane().add(jLabel4, java.awt.BorderLayout.PAGE_END);
+        dlgDetails_lblDate.setText("jLabel4");
+        dlgDetails.getContentPane().add(dlgDetails_lblDate, java.awt.BorderLayout.PAGE_END);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 300));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 500));
         jPanel1.setLayout(null);
 
         dlgDtails_lblName.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        dlgDtails_lblName.setForeground(new java.awt.Color(255, 255, 255));
         dlgDtails_lblName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dlgDtails_lblName.setText("jLabel11");
         jPanel1.add(dlgDtails_lblName);
@@ -408,25 +414,21 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         dlgDetails_lblPic.setBounds(130, 70, 330, 150);
 
         dlgDetails_lblIngredients.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
-        dlgDetails_lblIngredients.setForeground(new java.awt.Color(255, 255, 255));
         dlgDetails_lblIngredients.setText("jLabel9");
         jPanel1.add(dlgDetails_lblIngredients);
         dlgDetails_lblIngredients.setBounds(230, 230, 330, 19);
 
         dlgDetails_Pric.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
-        dlgDetails_Pric.setForeground(new java.awt.Color(255, 255, 255));
         dlgDetails_Pric.setText("jLabel8");
         jPanel1.add(dlgDetails_Pric);
         dlgDetails_Pric.setBounds(230, 280, 200, 19);
 
         jLabel7.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Price:");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(120, 280, 50, 20);
 
         jLabel8.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Ingredients: ");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(110, 230, 90, 19);
@@ -440,7 +442,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         jPanel1.add(dlgDetails_btnOK);
         dlgDetails_btnOK.setBounds(260, 320, 100, 30);
 
-        jLabel5.setText("jLabel5");
         jLabel5.setPreferredSize(new java.awt.Dimension(800, 600));
         jPanel1.add(jLabel5);
         jLabel5.setBounds(0, 0, 590, 410);
@@ -711,6 +712,13 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     private void dlgDetailsWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDetailsWindowOpened
         
     }//GEN-LAST:event_dlgDetailsWindowOpened
+
+    private void dlgMenuWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgMenuWindowClosing
+        // TODO add your handling code here:
+        menuListModel.removeAllElements();
+        txt_total.setText("");
+        total=new BigDecimal(0);
+    }//GEN-LAST:event_dlgMenuWindowClosing
     
     /**
      * @param args the command line arguments
@@ -760,6 +768,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     private javax.swing.JDialog dlgDetails;
     private javax.swing.JLabel dlgDetails_Pric;
     private javax.swing.JButton dlgDetails_btnOK;
+    private javax.swing.JLabel dlgDetails_lblDate;
     private javax.swing.JLabel dlgDetails_lblIngredients;
     private javax.swing.JLabel dlgDetails_lblPic;
     private javax.swing.JLabel dlgDtails_lblName;
@@ -787,7 +796,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
