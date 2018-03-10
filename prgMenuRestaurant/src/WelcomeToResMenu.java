@@ -719,18 +719,18 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_dlgDetailsWindowOpened
 
-<<<<<<< HEAD
+
     private void dlgPayment_cbMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_cbMethodActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_dlgPayment_cbMethodActionPerformed
-=======
+
     private void dlgMenuWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgMenuWindowClosing
         // TODO add your handling code here:
         menuListModel.removeAllElements();
         txt_total.setText("");
         total=new BigDecimal(0);
     }//GEN-LAST:event_dlgMenuWindowClosing
->>>>>>> ce3b8be23326cdbed05927a88908304928f1480d
+
     
     /**
      * @param args the command line arguments
