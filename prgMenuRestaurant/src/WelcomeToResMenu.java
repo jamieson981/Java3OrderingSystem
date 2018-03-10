@@ -59,7 +59,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         itemNames.add("Pick an item");
         for (MenuItem it : items) {
              itemNames.add(it.getItemName());
-//           System.out.println(it.getItemName());
         }
         cBox.setModel(new DefaultComboBoxModel(itemNames.toArray()));
     }
@@ -589,7 +588,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         int currIndex = -1;
         if (evt.getButton() == 2) { // right button
             currIndex = lstMenu.locationToIndex(evt.getPoint());
-            //System.out.println("Index: " + index);
             if (currIndex != -1) {
                 lstMenu.setSelectedIndex(currIndex); //select the item
 //                popupMenu.show(lstMenu, evt.getX(), evt.getY()); //and show the menu
