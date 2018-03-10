@@ -18,13 +18,9 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import java.lang.Iterable;
 
-/**
- *
- * @author Arad
- */
 public class WelcomeToResMenu extends javax.swing.JFrame {
     
     private Connection conn;
@@ -562,7 +558,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     private void addRemoveMenuList(int index, javax.swing.JComboBox<String> box) {
         try {
             if (menuListModel.get(index).getPrice() != null){
-                total=total.subtract(menuListModel.get(index).getPrice());
+                total = total.subtract(menuListModel.get(index).getPrice());
             }
             menuListModel.remove(index);
         } catch(IndexOutOfBoundsException e){
@@ -574,7 +570,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             MenuItem item = mService.getItemByName((String)box.getSelectedItem());        
             menuListModel.add(index, item);
             
-            total=total.add(item.getPrice());
+            total = total.add(item.getPrice());
             
         } else {
             menuListModel.add(index, new MenuItem());
@@ -625,6 +621,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     private void dlg_btPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btPaymentActionPerformed
         // TODO add your handling code here:
+        
         if (total.doubleValue() > 0.00) {
         dlgPayment.pack();
         dlgPayment.setVisible(true);
@@ -645,10 +642,16 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     private void dlgPayment_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_SaveActionPerformed
         // TODO add your handling code here:
         OrderService oService = new OrderService();
+        int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total);
         
+        for (int i = 0; i < menuListModel.getSize(); i++) {
+            MenuItem item = menuListModel.getElementAt(i);
+            if (item.getId() != 0) {
+                oService.saveItem(orderId, item.getId());
+            }
+        }
         
-        
-        String errors="";
+        String errors = "";
         if (!dlgPayment_tfTable.getText().matches("^[0-9]{1,2}$")||(Integer.parseInt(dlgPayment_tfTable.getText())>30)) {
             errors += "* Enter Table Number between 1 and 30.\n";
         }
@@ -657,17 +660,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         }
         //send
         if (errors.isEmpty()) {
-            String line = String.format("Table no: %s; total: %s; Payment method: %s Dat&time %s"
-                    , dlgPayment_tfTable.getText(),dlgPayment_tfTotal.getText(), dlgPayment_cbMethod.getSelectedItem(),dlgPayment_lblCalendar.getText());
+
             try {
-                FileAccess.addTransactionToFile(line);
                 dlgMenu.setVisible(false);
                 dlgPayment.setVisible(false);
                 menuListModel.removeAllElements();
                 total=new BigDecimal(0);
                 txt_total.setText(" ");
                 
-            } catch (IOException ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(this,
                         ex.getMessage(),
@@ -689,7 +690,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_totalActionPerformed
 
     private void dlgPayment_ReciptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_ReciptActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_dlgPayment_ReciptActionPerformed
 
    
@@ -704,7 +705,6 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
 
     private void dlgMenuWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgMenuWindowOpened
       
-        
     }//GEN-LAST:event_dlgMenuWindowOpened
 
  

@@ -19,29 +19,44 @@ import java.util.List;
  * @author Alex
  */
 public class OrderService {
-    public void save(int tableNo, BigDecimal total) {        
+    public int save(int tableNo, BigDecimal total) {  
         DBService dbservice = new DBService();
         Connection conn = dbservice.connect();
-        String sql = " insert into orders (table_no, total)"
-        + " values (?, ?)";
+
+        String sql = "INSERT INTO Orders (total, table_no) VALUES (?, ?)";
+        PreparedStatement stmt;
+        
+        try {
+            stmt = conn.prepareStatement(sql, new String[] {"id"} );
+            stmt.setBigDecimal(1, total);
+            stmt.setInt(2, tableNo);
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+               int id = rs.getInt(1);
+               return id;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return -1;
+    }
+    
+    public void saveItem(int orderId, int menuItemId) {
+        DBService dbservice = new DBService();
+        Connection conn = dbservice.connect();
+
+        String sql = "INSERT INTO OrderItems (order_id, menuItem_id) VALUES (?, ?)";
         PreparedStatement stmt;
         
         try {
             stmt = conn.prepareStatement(sql);
-            ResultSet set = stmt.executeQuery();
-            
-            stmt.setBigDecimal(tableNo, total);
-            stmt.setInt(tableNo, tableNo);
-            
-            
+            stmt.setInt(1, orderId);
+            stmt.setInt(2, menuItemId);
+            stmt.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
-
+            
         }
-        
-       
-        
-        
     }
         
 }
