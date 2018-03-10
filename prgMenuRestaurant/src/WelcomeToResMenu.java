@@ -653,7 +653,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
         //send
         if (errors.isEmpty()) {
             OrderService oService = new OrderService();
-            int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total);
+            int orderId = oService.save(Integer.parseInt(dlgPayment_tfTable.getText()), total, dlgPayment_cbMethod.toString());
 
             for (int i = 0; i < menuListModel.getSize(); i++) {
                 MenuItem item = menuListModel.getElementAt(i);

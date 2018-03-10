@@ -23,7 +23,7 @@ public class OrderService {
         DBService dbservice = new DBService();
         Connection conn = dbservice.connect();
 
-        String sql = "INSERT INTO Orders (total, table_no) VALUES (?, ?)";
+        String sql = "INSERT INTO Orders (total, table_no, payment_type) VALUES (?, ?)";
         PreparedStatement stmt;
         
         try {
