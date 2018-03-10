@@ -29,3 +29,4 @@ Table no: 1; total: 43.76; Payment method: Debit Dat&time 2018/02/11 20:39:20
 Table no: 1; total: 25.99; Payment method: Debit Dat&time 2018/02/11 20:41:30
 Table no: 1; total: 24.24; Payment method: Credit Dat&time 2018/03/09 06:01:39
 Table no: 12; total: 0; Payment method: Credit Dat&time 2018/03/09 13:41:55
+Table no: 12; total: 9.88; Payment method: Credit Dat&time 2018/03/09 18:36:37

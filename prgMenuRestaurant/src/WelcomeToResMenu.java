@@ -2,6 +2,7 @@
 
 import Models.MenuItem;
 import Services.MenuService;
+import Services.OrderService;
 import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -17,6 +18,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,23 +26,14 @@ import javax.swing.JOptionPane;
  * @author Arad
  */
 public class WelcomeToResMenu extends javax.swing.JFrame {
-
-   
-    //public static final String DBUSER = "restaurant";
-    //public static final String DBPASS = "as5SRxjW5Roq3kbx";
-//    public static final String DBUSER = "alexJamieson";
-//    public static final String DBPASS = "JavaProject";
+    
     private Connection conn;
     DefaultListModel<MenuItem> menuListModel = new DefaultListModel<>();
-//    BigDecimal total =BigDecimal.ZERO;
     
-     
        ImageIcon iconLogo;
        String selectName;
+       BigDecimal total = BigDecimal.ZERO;
        
-       
-       
-
     public WelcomeToResMenu() {
         initComponents();
         
@@ -78,17 +71,15 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
             stmt.setString(1,order);
             ResultSet set = stmt.executeQuery();
             while (set.next()) {
-                
                 dlg_lblFoodName.setText(set.getString("name"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-
         }
     }
 
     @SuppressWarnings("unchecked")
-     BigDecimal total = BigDecimal.ZERO;
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -505,6 +496,7 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dlg_btOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btOrderActionPerformed
+       int currIndex = -1;
         try {
             MenuItem selectItem = new MenuItem();
             currIndex = lstMenu.getSelectedIndex();
@@ -552,98 +544,47 @@ public class WelcomeToResMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btOrderActionPerformed
 
     private void dlg_cbStarterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbStarterActionPerformed
-       
-        try {
-            menuListModel.remove(0);
-        } catch(IndexOutOfBoundsException e){
-            // do nothing
-        }
-        if (!((String)dlg_cbStarter.getSelectedItem()).equals("")) {
-            MenuService mService = new MenuService();
-            MenuItem item = mService.getItemByName((String)dlg_cbStarter.getSelectedItem());        
-            menuListModel.add(0, item);
-            
-            //total=total.menuListModel.;
-            //System.out.println((item.getIngredients()));
-//            ArrayList<MenuItem> ao=new ArrayList<>();
-//            ao.add(item);
-//            
-//            for(MenuItem addItem:ao){
-//            total=total.add(addItem.getPrice());
-//            dlg_tfPayment.setText((String.valueOf(total)));
-//            
-//            }  
-            
-        } 
-        
+        addRemoveMenuList(0, dlg_cbStarter);
     }//GEN-LAST:event_dlg_cbStarterActionPerformed
 
     private void dlg_cbMainCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbMainCourseActionPerformed
-        try {
-            menuListModel.remove(1);
-        } catch(IndexOutOfBoundsException e){
-            // do nothing
-        }
-        if (!((String)dlg_cbMainCourse.getSelectedItem()).equals("")) {
-            MenuService mService = new MenuService();
-            MenuItem item = mService.getItemByName((String)dlg_cbMainCourse.getSelectedItem()); 
-            
-            menuListModel.add(1, item);
-//            ArrayList<MenuItem> ao=new ArrayList<>();
-//            ao.add(item);
-//            
-//            for(MenuItem addItem:ao){
-//            total=total.add(addItem.getPrice());
-//            dlg_tfPayment.setText((String.valueOf(total)));
-//            }
-        }    
-
+        addRemoveMenuList(1, dlg_cbMainCourse);
     }//GEN-LAST:event_dlg_cbMainCourseActionPerformed
 
     private void dlg_cbDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbDessertActionPerformed
-       try {
-            menuListModel.remove(2);
-        } catch(IndexOutOfBoundsException e){
-            // do nothing
-        }
-        if (!((String)dlg_cbDessert.getSelectedItem()).equals("")) {
-            MenuService mService = new MenuService();
-            MenuItem item = mService.getItemByName((String)dlg_cbDessert.getSelectedItem());        
-            menuListModel.add(2, item);
-            
-            
-//            ArrayList<MenuItem> ao=new ArrayList<>();
-//            ao.add(item);
-//            
-//            for(MenuItem addItem:ao){
-//            total=total.add(addItem.getPrice());
-//            dlg_tfPayment.setText((String.valueOf(total)));
-//            }
-        } 
+        addRemoveMenuList(2, dlg_cbDessert);
     }//GEN-LAST:event_dlg_cbDessertActionPerformed
 
     private void dlg_cbDrinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_cbDrinkActionPerformed
-        try {
-            menuListModel.remove(3);
-        } catch(IndexOutOfBoundsException e){
-            // do nothing
-        }
-        if (!((String)dlg_cbDrink.getSelectedItem()).equals("")) {
-            MenuService mService = new MenuService();
-            MenuItem item = mService.getItemByName((String)dlg_cbDrink.getSelectedItem());        
-            menuListModel.add(3, item);
-            
-//            ArrayList<MenuItem> ao=new ArrayList<>();
-//            ao.add(item);
-//            for(MenuItem addItem:ao){
-//            total=total.add(addItem.getPrice());
-//            dlg_tfPayment.setText((String.valueOf(total)));
-//            }
-        } 
+        addRemoveMenuList(3, dlg_cbDrink);
     }//GEN-LAST:event_dlg_cbDrinkActionPerformed
-int currIndex = -1;
+
+    private void addRemoveMenuList(int index, javax.swing.JComboBox<String> box) {
+        try {
+            if (menuListModel.get(index).getPrice() != null){
+                total=total.subtract(menuListModel.get(index).getPrice());
+            }
+            menuListModel.remove(index);
+        } catch(IndexOutOfBoundsException e){
+        // do nothing
+        }
+        if (!((String)box.getSelectedItem()).equals("Pick an item")) {            
+            
+            MenuService mService = new MenuService();
+            MenuItem item = mService.getItemByName((String)box.getSelectedItem());        
+            menuListModel.add(index, item);
+            
+            total=total.add(item.getPrice());
+            
+        } else {
+            menuListModel.add(index, new MenuItem());
+        }
+        txt_total.setText((String.valueOf(total)));
+    }
+    
     private void lstMenuMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstMenuMouseReleased
         // TODO add your handling code here:
+        int currIndex = -1;
         if (evt.getButton() == 2) { // right button
             currIndex = lstMenu.locationToIndex(evt.getPoint());
             //System.out.println("Index: " + index);
@@ -656,6 +597,7 @@ int currIndex = -1;
 
     private void dlg_btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlg_btDeleteActionPerformed
         // TODO add your handling code here:
+        int currIndex = -1;
         currIndex = lstMenu.getSelectedIndex();
         if (currIndex == -1) {
             JOptionPane.showMessageDialog(null,
@@ -666,6 +608,7 @@ int currIndex = -1;
         }
         total=total.subtract(menuListModel.getElementAt(currIndex).getPrice());
         txt_total.setText((String.valueOf(total)));
+        menuListModel.get(currIndex).getPrice();
         menuListModel.remove(currIndex);
         menuListModel.add(currIndex, new MenuItem());
         switch (currIndex) {
@@ -701,6 +644,10 @@ int currIndex = -1;
 
     private void dlgPayment_SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dlgPayment_SaveActionPerformed
         // TODO add your handling code here:
+        OrderService oService = new OrderService();
+        
+        
+        
         String errors="";
         if (!dlgPayment_tfTable.getText().matches("^[0-9]{1,2}$")||(Integer.parseInt(dlgPayment_tfTable.getText())>30)) {
             errors += "* Enter Table Number between 1 and 30.\n";
@@ -763,16 +710,6 @@ int currIndex = -1;
  
     private void dlgDetailsWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_dlgDetailsWindowOpened
         
-//        if (!(selectName == null)) {
-//            dlgDtails_lblName.setText(selectName);
-//            MenuService myService = new MenuService();
-//            MenuItem item = myService.getItemByName(selectName);
-//            dlgDetails_lblIngredients.setText(item.getIngredients());
-//            dlgDetails_Pric.setText(String.valueOf(item.getPrice()));
-//            iconLogo = new ImageIcon("image\\"+selectName+".jpg");
-//                    // In init() method write this code
-//                      dlgDetails_lblPic.setIcon(iconLogo);
-//        }                 
     }//GEN-LAST:event_dlgDetailsWindowOpened
     
     /**

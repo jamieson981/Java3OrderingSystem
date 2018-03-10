@@ -10,42 +10,25 @@ package Models;
  * @author Alex
  */
 public class OrderItems {
-    private int id;
-    private int custOrderId;
-    private int menuItemId;
-    private int quantity;
+    private int order_id;
+    private int menuItem_id;
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public int getMenuItem_id() {
+        return menuItem_id;
+    }
+
+    public void setMenuItem_id(int menuItem_id) {
+        this.menuItem_id = menuItem_id;
+    }
     
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCustOrderId() {
-        return custOrderId;
-    }
-
-    public void setCustOrderId(int custOrderId) {
-        this.custOrderId = custOrderId;
-    }
-
-    public int getMenuItemId() {
-        return menuItemId;
-    }
-
-    public void setMenuItemId(int menuItemId) {
-        this.menuItemId = menuItemId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-            
+   
 }
